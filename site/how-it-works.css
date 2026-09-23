@@ -1,0 +1,432 @@
+/* =========================================================
+   FinStarter — How it works (Figma node 21:34785)
+   Page-specific styles; shared tokens/components live in styles.css.
+   ========================================================= */
+
+/* ---------- hero ---------- */
+.hiw-hero { padding-bottom: 80px; }
+/* title without the gradient run for now (per review); the mock had "You don't have to." in gradient */
+.hiw-hero__h1 { width: 100%; color: var(--ink); }
+
+/* ---------- What's already built for you ---------- */
+.built__wrap {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+}
+.built__nav {
+  flex: 0 0 260px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.built__group { display: flex; flex-direction: column; gap: 10px; }
+.built__label {
+  padding-left: 4px;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 15.73px;
+  letter-spacing: 0.65px;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.built__items { display: flex; flex-direction: column; gap: 6px; }
+.built__item {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: none;
+  font: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20.8px;
+  letter-spacing: -0.16px;
+  color: var(--ink);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.built__item:hover { background: var(--surface); color: var(--blue); }
+.built__item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.built__item.is-active {
+  font-weight: 600;
+  background: var(--surface);
+  border-color: var(--surface);
+  color: var(--ink);
+}
+
+.built__content {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 1068px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.built__head { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.built__titlerow { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.built__title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38.72px;
+  letter-spacing: -0.96px;
+  color: var(--ink);
+}
+.built__desc {
+  width: 100%;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  letter-spacing: -0.26px;
+  color: var(--ink);
+}
+.built__slot {
+  position: relative;
+  width: 100%;
+  height: 510px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.built__img {
+  position: absolute;
+  left: 36px;
+  top: 20px;
+  width: 1032px;
+  height: 510px;
+  max-width: none;
+  object-fit: cover;
+  object-position: left top;
+}
+/* content swap animation */
+.built__title, .built__desc, .built__img { transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.built__content.is-switching .built__title,
+.built__content.is-switching .built__desc { opacity: 0; transform: translateY(6px); }
+.built__content.is-switching .built__img { opacity: 0; transform: translateY(10px) scale(0.995); }
+
+/* ---------- No licence fee ---------- */
+.pay { background: var(--ink); }
+.pay__h2, .pay__desc { color: #fff; }
+/* Figma: the title hugs its text (1043px) and overflows the 940px frame on one line */
+.pay__h2 { max-width: none; white-space: nowrap; }
+.pay__row {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pcard {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 280px;
+  padding: 32px;
+  border-radius: 32px;
+  background: var(--ink-2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pcard__h4 {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 26.45px;
+  letter-spacing: -0.46px;
+  color: #fff;
+}
+.pcard__label {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+}
+.pcard__p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--grey);
+}
+.pcard__p--white { color: #fff; }
+/* Independence: gradient border 2px inside + blue glow */
+.pcard--best {
+  position: relative;
+  box-shadow: var(--glow-card);
+}
+.pcard--best::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  padding: 2px;
+  background: var(--grad);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+/* + + = operators between the cards */
+.pay__op {
+  position: relative;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.pay__op::before, .pay__op::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+}
+.pay__op--plus::before { width: 2px; height: 16px; }
+.pay__op--plus::after { width: 16px; height: 2px; }
+.pay__op--eq::before { width: 12px; height: 2px; transform: translate(-50%, calc(-50% - 3px)); }
+.pay__op--eq::after { width: 12px; height: 2px; transform: translate(-50%, calc(-50% + 3px)); }
+
+/* ---------- Roadmap ---------- */
+.roadmap__h2 {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+}
+.rm {
+  position: relative;
+  width: 100%;
+  max-width: 728px;
+}
+.rm__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.rm__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+.rm__meta {
+  flex: 0 0 140px;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.rm__num {
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: 0.3px;
+  /* same cyan→blue gradient as every other step number on the site */
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.rm__when {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.94px;
+  text-align: right;
+  color: var(--grey);
+}
+/* node: 16px ring with a white core, sits on the line */
+.rm__node {
+  position: relative;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  z-index: 1;
+}
+.rm__node::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--rm-node, #3cffff);
+  box-shadow: 0 0 16px var(--rm-node, #3cffff);
+}
+.rm__node::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 9px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+}
+/* node colours sample the line gradient at each step */
+/* same scale as the home roadmaps: cyan → blue while the platform is being built, and --green
+   only once it is live — so Launch keeps the blue ring and the line turns green right after it
+   (on home the Launch stop is blue for exactly the same reason) */
+.rm__item:nth-child(1) .rm__node { --rm-node: #3cffff; }
+.rm__item:nth-child(2) .rm__node { --rm-node: #1fb4ff; }
+.rm__item:nth-child(3) .rm__node { --rm-node: #0a86ff; }
+.rm__item:nth-child(4) .rm__node { --rm-node: #006aff; }
+.rm__item:nth-child(5) .rm__node { --rm-node: var(--green); }
+.rm__body {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.rm__title {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 26.45px;
+  letter-spacing: -0.46px;
+  color: var(--ink);
+}
+.rm__p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--grey);
+}
+/* the line: 2px, from the first node to the last, plus a fading 105px tail */
+.rm__line {
+  position: absolute;
+  left: calc(140px + 24px + 14px);
+  top: 15px;
+  bottom: 15px;
+  width: 2px;
+  pointer-events: none;
+}
+.rm__line-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #3cffff 0%, #006aff 70%, var(--green) 84%, var(--green) 100%);
+  box-shadow: 0 0 16px rgba(0, 106, 255, 0.5);
+  transform-origin: top center;
+}
+.rm__line-tail {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 2px;
+  height: 105px;
+  background: linear-gradient(180deg, var(--green) 0%, rgba(62, 226, 127, 0) 100%);
+}
+/* draw-in animation (armed by JS via .rm--armed, played via .rm--in) */
+.rm--armed .rm__line-fill { transform: scaleY(0); }
+.rm--armed .rm__line-tail { opacity: 0; }
+.rm--armed .rm__node::before { transform: scale(0); opacity: 0; }
+.rm--armed .rm__node::after { transform: scale(0); }
+.rm--armed .rm__meta, .rm--armed .rm__body { opacity: 0; transform: translateY(10px); }
+.rm--in .rm__line-fill { transform: scaleY(1); transition: transform 1.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.rm--in .rm__line-tail { opacity: 1; transition: opacity 0.6s ease 1.5s; }
+.rm--in .rm__node::before, .rm--in .rm__node::after {
+  transform: scale(1); opacity: 1;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+.rm--in .rm__meta, .rm--in .rm__body {
+  opacity: 1; transform: none;
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.rm--in .rm__item:nth-child(1) .rm__node::before, .rm--in .rm__item:nth-child(1) .rm__node::after, .rm--in .rm__item:nth-child(1) .rm__meta, .rm--in .rm__item:nth-child(1) .rm__body { transition-delay: 0.05s; }
+.rm--in .rm__item:nth-child(2) .rm__node::before, .rm--in .rm__item:nth-child(2) .rm__node::after, .rm--in .rm__item:nth-child(2) .rm__meta, .rm--in .rm__item:nth-child(2) .rm__body { transition-delay: 0.4s; }
+.rm--in .rm__item:nth-child(3) .rm__node::before, .rm--in .rm__item:nth-child(3) .rm__node::after, .rm--in .rm__item:nth-child(3) .rm__meta, .rm--in .rm__item:nth-child(3) .rm__body { transition-delay: 0.8s; }
+.rm--in .rm__item:nth-child(4) .rm__node::before, .rm--in .rm__item:nth-child(4) .rm__node::after, .rm--in .rm__item:nth-child(4) .rm__meta, .rm--in .rm__item:nth-child(4) .rm__body { transition-delay: 1.15s; }
+.rm--in .rm__item:nth-child(5) .rm__node::before, .rm--in .rm__item:nth-child(5) .rm__node::after, .rm--in .rm__item:nth-child(5) .rm__meta, .rm--in .rm__item:nth-child(5) .rm__body { transition-delay: 1.45s; }
+
+/* ---------- Your business. Our engineering. ---------- */
+.yours { background: var(--ink-2); }
+.yours__h2 { color: #fff; }
+.yours__row {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  align-items: stretch;
+  gap: 48px;
+}
+.ycard {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 32px 40px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+/* "Your right to use it": same highlight as the Independence card — gradient border 2px inside + blue glow */
+.ycard--glow {
+  position: relative;
+  box-shadow: var(--glow-card);
+}
+.ycard--glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  padding: 2px;
+  background: var(--grad);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.ycard__h4 {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 31.47px;
+  letter-spacing: -0.52px;
+  color: #fff;
+}
+.ycard__pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.ypill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 980px;
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.36px;
+  color: #fff;
+  white-space: nowrap;
+}
+.ypill__check { width: 16px; height: 16px; flex: 0 0 16px; }
+.ycard__p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .built__title, .built__desc, .built__img, .rm__line-fill, .rm__line-tail, .rm__node::before, .rm__node::after, .rm__meta, .rm__body { transition: none !important; }
+  .rm--armed .rm__line-fill { transform: none; }
+  .rm--armed .rm__line-tail { opacity: 1; }
+  .rm--armed .rm__node::before, .rm--armed .rm__node::after { transform: none; opacity: 1; }
+  .rm--armed .rm__meta, .rm--armed .rm__body { opacity: 1; transform: none; }
+}

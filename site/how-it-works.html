@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works — FinStarter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="how-it-works.css">
+<link rel="stylesheet" href="responsive.css">
+<script src="site.js" defer></script>
+<script src="how-it-works.js" defer></script>
+</head>
+<body>
+
+<!-- ===================== NAVIGATION ===================== -->
+<header class="nav">
+  <div class="nav__wrap">
+    <a class="nav__logo" href="index.html"><img class="nav__logo-dark" src="assets/logo-nav.svg" alt="FinStarter" width="116" height="24"><img class="nav__logo-light" src="assets/logo-nav-light.svg" alt="" width="116" height="24"></a>
+    <nav class="nav__menu" id="site-menu">
+      <a class="nav__item" href="index.html">Home</a>
+      <a class="nav__item" href="how-it-works.html">How it works</a>
+      <div class="nav__dd">
+        <a class="nav__item nav__item--dd" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="dd-built">Built for you<svg class="nav__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6.5L8 10.5L12 6.5" stroke="currentColor"/></svg></a>
+        <div class="dropdown" id="dd-built">
+          <div class="dropdown__group">
+            <div class="dropdown__label">PORTFOLIO OPERATIONS</div>
+            <a class="dropdown__item" href="#">Portfolio management</a>
+            <a class="dropdown__item" href="#">Model portfolio engine</a>
+            <a class="dropdown__item" href="#">AI strategy validation</a>
+          </div>
+          <div class="dropdown__group">
+            <div class="dropdown__label">PORTFOLIO OPERATIONS</div>
+            <a class="dropdown__item" href="#">Client portal</a>
+            <a class="dropdown__item" href="#">Customer and lifecycle management</a>
+          </div>
+          <div class="dropdown__group">
+            <div class="dropdown__label">INTELLIGENCE AND GOVERNANCE</div>
+            <a class="dropdown__item" href="#">Analytics</a>
+            <a class="dropdown__item" href="#">Reporting</a>
+            <a class="dropdown__item" href="#">Audit trail</a>
+          </div>
+        </div>
+      </div>
+      <a class="nav__item" href="#">Pricing</a>
+      <a class="nav__item" href="contact.html">Contact</a>
+    </nav>
+    <a class="nav__btn" href="#demo" data-open-demo>Book a Demo</a>
+    <button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero hiw-hero">
+  <div class="blobs" aria-hidden="true"><i class="blob blob--1"></i><i class="blob blob--2"></i><i class="blob blob--3"></i></div>
+  <div class="hero__content">
+    <div class="hero__title">
+      <div class="hero__h1group">
+        <div class="eyebrow-row"><span class="eyebrow">How it works</span></div>
+        <h1 class="hero__h1 hiw-hero__h1">Every company rebuilds <br>the same layer. <span class="gt">You don't have to.</span></h1>
+      </div>
+      <p class="hero__sub">FinStarter is a white-label, production-ready foundation for building digital investment platforms.<br>For investment managers, brokers, and fintechs launching or modernizing client-facing investment platforms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHAT'S ALREADY BUILT FOR YOU ===================== -->
+<section class="section built">
+  <div class="h2group">
+    <span class="eyebrow">Header</span>
+    <div class="h2group__inner">
+      <h2 class="h2 h2--px h2--940">What's already built for you</h2>
+    </div>
+    <p class="desc desc--1200">Every company that manages client investments needs the same underlying layer. In FinStarter it is already built, tested, and compliant. What you receive is a finished, working foundation — not a toolkit and not a project to manage.</p>
+  </div>
+
+  <div class="built__wrap">
+    <nav class="built__nav" aria-label="Features">
+      <div class="built__group">
+        <div class="built__label">Client layer</div>
+        <div class="built__items">
+          <button class="built__item is-active" type="button" data-feature="client-portal" aria-pressed="true">Client portal</button>
+          <button class="built__item" type="button" data-feature="lifecycle" aria-pressed="false">Customer and lifecycle man...</button>
+        </div>
+      </div>
+      <div class="built__group">
+        <div class="built__label">Portfolio operations</div>
+        <div class="built__items">
+          <button class="built__item" type="button" data-feature="portfolio" aria-pressed="false">Portfolio management</button>
+          <button class="built__item" type="button" data-feature="model" aria-pressed="false">Model portfolio engine</button>
+          <button class="built__item" type="button" data-feature="ai" aria-pressed="false">AI strategy validation</button>
+        </div>
+      </div>
+      <div class="built__group">
+        <div class="built__label">Intelligence and governance</div>
+        <div class="built__items">
+          <button class="built__item" type="button" data-feature="analytics" aria-pressed="false">Analytics</button>
+          <button class="built__item" type="button" data-feature="reporting" aria-pressed="false">Reporting</button>
+          <button class="built__item" type="button" data-feature="audit" aria-pressed="false">Audit trail</button>
+          <button class="built__item" type="button" data-feature="governance" aria-pressed="false">Governance</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="built__content">
+      <div class="built__head">
+        <div class="built__titlerow">
+          <h3 class="built__title" id="built-title">Client portal</h3>
+        </div>
+        <p class="built__desc" id="built-desc">Every company that manages client investments needs the same underlying layer.<br>In FinStarter it is already built, tested, and compliant. What you receive is a finished, working foundation — not a toolkit and not a project to manage.</p>
+        <a class="btn btn--dark" href="#">Read More</a>
+      </div>
+      <div class="built__slot">
+        <img class="built__img" id="built-img" src="assets/hiw-oe.png" alt="" width="1032" height="510">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NO LICENCE FEE ===================== -->
+<section class="section pay">
+  <div class="h2group">
+    <span class="eyebrow">Header</span>
+    <div class="h2group__inner">
+      <h2 class="h2 h2--px h2--940 pay__h2">No licence fee. What you actually pay for</h2>
+    </div>
+    <p class="desc desc--1200 pay__desc">There is no licence fee, because this is not a product sold identically to everyone.<br>You pay for the work of making it yours, and for keeping it running.</p>
+  </div>
+  <div class="pay__row">
+    <article class="pcard">
+      <h4 class="pcard__h4">Scope</h4>
+      <div class="pcard__label gt-block">Once, up front</div>
+      <p class="pcard__p">We estimate the configuration and custom build up front, against what the foundation already covers. No discovery-by-invoice.</p>
+    </article>
+    <span class="pay__op pay__op--plus" aria-hidden="true"></span>
+    <article class="pcard">
+      <h4 class="pcard__h4">Build</h4>
+      <div class="pcard__label gt-block">Fixed engagement</div>
+      <p class="pcard__p">A fixed engagement to configure, extend, brand, and integrate. One team, one point of accountability.</p>
+    </article>
+    <span class="pay__op pay__op--plus" aria-hidden="true"></span>
+    <article class="pcard">
+      <h4 class="pcard__h4">Support</h4>
+      <div class="pcard__label gt-block">Ongoing service</div>
+      <p class="pcard__p">An ongoing service: security patching, dependency updates, regulatory change, and platform evolution.</p>
+    </article>
+    <span class="pay__op pay__op--eq" aria-hidden="true"></span>
+    <article class="pcard pcard--best">
+      <h4 class="pcard__h4">Independence</h4>
+      <div class="pcard__label gt-block">Never billed for</div>
+      <p class="pcard__p pcard__p--white">Open architecture and standard integrations. Your deployment, your data, your exit — you are never locked in.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== ROADMAP ===================== -->
+<section class="section roadmap">
+  <div class="h2group">
+    <span class="eyebrow">Header</span>
+    <div class="h2group__inner">
+      <h2 class="h2 h2--px h2--940 roadmap__h2">We are <span class="gt-slice">ready to guide you</span> through this journey from start to finish. <br>It looks as follows:</h2>
+    </div>
+  </div>
+
+  <div class="rm" id="roadmap">
+    <div class="rm__line" aria-hidden="true"><span class="rm__line-fill"></span><span class="rm__line-tail"></span></div>
+    <ol class="rm__list">
+      <li class="rm__item">
+        <div class="rm__meta"><span class="rm__num">01</span><span class="rm__when">Weeks 1–2</span></div>
+        <span class="rm__node" aria-hidden="true"></span>
+        <div class="rm__body">
+          <h4 class="rm__title">Discovery</h4>
+          <p class="rm__p">We map your processes, your data, and your regulatory perimeter against the foundation. You see exactly what is already there and what needs building.</p>
+        </div>
+      </li>
+      <li class="rm__item">
+        <div class="rm__meta"><span class="rm__num">02</span><span class="rm__when">The long stretch</span></div>
+        <span class="rm__node" aria-hidden="true"></span>
+        <div class="rm__body">
+          <h4 class="rm__title">Configuration, custom build and integration</h4>
+          <p class="rm__p">The foundation is configured and extended to fit your model, then connected to your custodians, data providers, and existing systems. This is real engineering work, scoped and estimated up front.</p>
+        </div>
+      </li>
+      <li class="rm__item">
+        <div class="rm__meta"><span class="rm__num">03</span><span class="rm__when">Before go-live</span></div>
+        <span class="rm__node" aria-hidden="true"></span>
+        <div class="rm__body">
+          <h4 class="rm__title">Quality assurance and acceptance</h4>
+          <p class="rm__p">Functional, security, and performance testing, followed by user acceptance with your own team. Nothing goes live until your people have signed it off.</p>
+        </div>
+      </li>
+      <li class="rm__item">
+        <div class="rm__meta"><span class="rm__num">04</span><span class="rm__when">Go-live</span></div>
+        <span class="rm__node" aria-hidden="true"></span>
+        <div class="rm__body">
+          <h4 class="rm__title">Launch</h4>
+          <p class="rm__p">Migration, production cutover, and team onboarding. Your brand, end to end, in front of your clients.</p>
+        </div>
+      </li>
+      <li class="rm__item">
+        <div class="rm__meta"><span class="rm__num">05</span><span class="rm__when">Ongoing</span></div>
+        <span class="rm__node" aria-hidden="true"></span>
+        <div class="rm__body">
+          <h4 class="rm__title">Support and evolve</h4>
+          <p class="rm__p">Our engineering team keeps the platform current — security patching, dependency updates, regulatory change — while you grow on it.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== YOUR BUSINESS. OUR ENGINEERING. ===================== -->
+<section class="section yours">
+  <div class="h2group">
+    <span class="eyebrow">Header</span>
+    <div class="h2group__inner">
+      <h2 class="h2 h2--px h2--940 yours__h2">Your business. Our engineering.</h2>
+    </div>
+  </div>
+  <div class="yours__row">
+    <div class="ycard">
+      <h4 class="ycard__h4">The foundation</h4>
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="ypill-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3cffff"/><stop offset="1" stop-color="#006aff"/></linearGradient></defs></svg>
+      <div class="ycard__pills">
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Architecture</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Security</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Engineering</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Product roadmap</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Architecture</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Security</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Engineering</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Product roadmap</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Architecture</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Security</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Engineering</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Product roadmap</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Security</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Engineering</span>
+        <span class="ypill"><svg class="ypill__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.91667L6.05263 13L14 5" stroke="url(#ypill-grad)" stroke-width="1.5"/></svg>Product roadmap</span>
+      </div>
+    </div>
+    <div class="ycard ycard--glow">
+      <h4 class="ycard__h4 gt-block">Your right to use it  &amp; everything above it is yours</h4>
+      <p class="ycard__p">You receive a perpetual, royalty-free right to use the foundation in your deployment. No licence fee, no per-seat charge, no revenue share. Your data, your configuration, your models, your brand, and every custom extension we build for you — your intellectual property, held in confidence. Your strategies and data are never reused, and the foundation is advanced by our engineering team, never from your proprietary work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BANNER ===================== -->
+<div class="tail">
+<div class="blobs" aria-hidden="true"><i class="blob blob--1"></i><i class="blob blob--2"></i><i class="blob blob--3"></i></div>
+<section class="section banner">
+  <div class="banner__content">
+    <div class="banner__title">
+      <div class="banner__h1group">
+        <div class="eyebrow-row"><span class="eyebrow">AI-DRIVEN</span></div>
+        <div class="eyebrow-row"><h1 class="banner__h1"><span class="gt-slice">Launch or modernize </span><br>your investment platform</h1></div>
+      </div>
+      <p class="hero__sub">Book a 30-minute demo — we'll show you the platform live, configured for your business.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--link" href="contact.html">Contact us</a>
+      <a class="btn btn--dark" href="#demo" data-open-demo>Book a Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <a href="#"><img src="assets/logo-footer.svg" alt="FinStarter" width="155" height="32"></a>
+      <p class="footer__tagline">White-label infrastructure for the next generation of invetsment platforms.</p>
+      <div class="footer__powered"><span>powered by</span><a class="footer__powered-link" href="https://www.itransition.com/" target="_blank" rel="noopener">Itransition</a></div>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <div class="footer__title">TITLE</div>
+        <div class="footer__links footer__links--fill">
+          <a href="#">Client portal</a>
+          <a href="#">Portfolio management</a>
+          <a href="#">Analytics</a>
+          <a href="#">Reporting</a>
+          <a href="#">Customer and lifecycle management</a>
+          <a href="#">Model portfolio engine</a>
+          <a href="#">Audit trail</a>
+          <a href="#">Al strategy validation</a>
+          <a href="#">Governance</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <div class="footer__title">TITLE</div>
+        <div class="footer__links">
+          <a href="how-it-works.html">How it works</a>
+          <a href="#">About Itransition</a>
+          <a href="#">Business Login</a>
+          <a href="#">Customer Portal</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <div class="footer__title">TITLE</div>
+        <div class="footer__links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Itransition Group Ltd. All rights reserved.</span>
+    <div class="footer__contact">
+      <a class="footer__mail" href="mailto:contact@finstarter.net">contact@finstarter.net</a>
+      <span class="footer__sep">|</span>
+      <span class="footer__loc">Decatur, GA</span>
+    </div>
+  </div>
+</footer>
+</div>
+
+<!-- ===================== BOOK A DEMO — MODAL ===================== -->
+<div class="modal" id="demo-modal" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="demo-title" tabindex="-1">
+    <button class="modal__close" type="button" data-close aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="modal__view modal__view--form">
+      <div class="modal__head">
+        <h2 class="modal__title" id="demo-title">Book your demo</h2>
+        <p class="modal__sub">30 minutes, live, configured for your business.</p>
+      </div>
+
+      <form class="form" id="demo-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="f-name">Full name <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="field__input" id="f-name" name="name" type="text" placeholder="John Doe" autocomplete="name" required>
+          <span class="field__error" id="f-name-err"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-email">Work email <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="field__input" id="f-email" name="email" type="email" placeholder="email@company.com" autocomplete="email" required>
+          <span class="field__error" id="f-email-err"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-company">Company name <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="field__input" id="f-company" name="company" type="text" placeholder="Company" autocomplete="organization" required>
+          <span class="field__error" id="f-company-err"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-phone">Phone number</label>
+          <input class="field__input" id="f-phone" name="phone" type="tel" placeholder="+1 555 000 0000" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-message">Message</label>
+          <textarea class="field__input field__input--area" id="f-message" name="message" rows="4" placeholder="Tell us about your needs"></textarea>
+        </div>
+        <button class="btn btn--dark form__submit" type="submit">
+          <span>Book a Demo</span>
+          <svg class="form__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form__note">By submitting you agree to be contacted about FinStarter. No newsletters.</p>
+      </form>
+    </div>
+
+    <div class="modal__view modal__view--done" hidden>
+      <div class="done__icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 14.5l5.5 5.5L22 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 class="modal__title">Request received</h2>
+      <p class="modal__sub">Thanks! We'll get back to you within one business day to pick a time.</p>
+      <button class="btn btn--dark done__close" type="button" data-close>Done</button>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

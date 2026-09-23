@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FinStarter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="responsive.css">
+<!-- dark hero (experiment, parked): re-enable with this link + class="hero-dark" on <body> -->
+<!-- <link rel="stylesheet" href="hero-dark.css"> -->
+<script src="site.js" defer></script>
+</head>
+<body>
+
+<!-- ===================== NAVIGATION ===================== -->
+<header class="nav">
+  <div class="nav__wrap">
+    <a class="nav__logo" href="index.html"><img class="nav__logo-dark" src="assets/logo-nav.svg" alt="FinStarter" width="116" height="24"><img class="nav__logo-light" src="assets/logo-nav-light.svg" alt="" width="116" height="24"></a>
+    <nav class="nav__menu" id="site-menu">
+      <a class="nav__item" href="index.html">Home</a>
+      <a class="nav__item" href="how-it-works.html">How it works</a>
+      <div class="nav__dd">
+        <a class="nav__item nav__item--dd" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="dd-built">Built for you<svg class="nav__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6.5L8 10.5L12 6.5" stroke="currentColor"/></svg></a>
+        <div class="dropdown" id="dd-built">
+          <div class="dropdown__group">
+            <div class="dropdown__label">PORTFOLIO OPERATIONS</div>
+            <a class="dropdown__item" href="#">Portfolio management</a>
+            <a class="dropdown__item" href="#">Model portfolio engine</a>
+            <a class="dropdown__item" href="#">AI strategy validation</a>
+          </div>
+          <div class="dropdown__group">
+            <div class="dropdown__label">PORTFOLIO OPERATIONS</div>
+            <a class="dropdown__item" href="#">Client portal</a>
+            <a class="dropdown__item" href="#">Customer and lifecycle management</a>
+          </div>
+          <div class="dropdown__group">
+            <div class="dropdown__label">INTELLIGENCE AND GOVERNANCE</div>
+            <a class="dropdown__item" href="#">Analytics</a>
+            <a class="dropdown__item" href="#">Reporting</a>
+            <a class="dropdown__item" href="#">Audit trail</a>
+          </div>
+        </div>
+      </div>
+      <a class="nav__item" href="#">Pricing</a>
+      <a class="nav__item" href="contact.html">Contact</a>
+    </nav>
+    <a class="nav__btn" href="#demo" data-open-demo>Book a Demo</a>
+    <button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <!-- soft blurred shapes drifting behind the hero (styles.css: BLOBS) -->
+  <div class="blobs" aria-hidden="true"><i class="blob blob--1"></i><i class="blob blob--2"></i><i class="blob blob--3"></i><i class="blob blob--4"></i></div>
+  <div class="hero__content">
+    <div class="hero__title">
+      <div class="hero__h1group">
+        <div class="eyebrow-row"><span class="eyebrow">AI-DRIVEN</span></div>
+        <h1 class="hero__h1">White-label <br><span class="gt">production-ready foundation</span><br>for digital investment platforms</h1>
+      </div>
+      <p class="hero__sub">One intelligent platform for firms that manage clients' investments.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--link" href="how-it-works.html">How it works</a>
+      <a class="btn btn--dark" href="#demo" data-open-demo>Book a Demo</a>
+    </div>
+  </div>
+  <div class="hero__slot">
+    <!-- Figma image-slot 31:21809 (1120×550) rebuilt as layers so the glow and the cards can move:
+         each PNG is the Figma render of one card incl. its shadow; positions = render bounds in % of the slot -->
+    <div class="hero__scene" aria-hidden="true">
+      <div class="hero__glow"></div>
+      <img class="hs hs--customers" src="assets/hero/customers.png" alt="" width="736" height="496">
+      <img class="hs hs--table" src="assets/hero/table.png" alt="" width="886" height="488">
+      <img class="hs hs--positions" src="assets/hero/positions.png" alt="" width="762" height="509">
+      <img class="hs hs--employee" src="assets/hero/employee.png" alt="" width="608" height="184">
+      <img class="hs hs--stat1" src="assets/hero/stat-1.png" alt="" width="350" height="210">
+      <img class="hs hs--stat2" src="assets/hero/stat-2.png" alt="" width="326" height="186">
+    </div>
+  </div>
+  <div class="hero__fade"></div>
+</section>
+
+<!-- ===================== WHY START ON A FOUNDATION ===================== -->
+<section class="section why">
+  <div class="h2group">
+    <span class="eyebrow">Why start on a foundation</span>
+    <h2 class="h2 h2--intrinsic">Every firm rebuilds the same layer.<br>You don’t have to.</h2>
+  </div>
+  <div class="why__wrap">
+    <div class="why__accent">
+      <div class="why__block1">
+        <div class="why__spantext">
+          <div class="why__num">01</div>
+          <div class="why__txt">
+            <h3 class="why__h3">Live in months, not years</h3>
+            <p class="why__sub">A production-ready foundation versus an 18–24 month scratch build. Everything you need is already built, tested, and compliant.</p>
+          </div>
+        </div>
+        <a class="btn btn--dark" href="#demo" data-open-demo>Talk to our experts</a>
+      </div>
+      <div class="why__divider"></div>
+      <div class="why__block2">
+        <div class="why__saved">18–24<br>months saved</div>
+        <div class="why__badges">
+          <span class="pill"><img src="assets/check.svg" alt="" width="16" height="16">Onboarding</span>
+          <span class="pill"><img src="assets/check.svg" alt="" width="16" height="16">Portfolio operations</span>
+          <span class="pill"><img src="assets/check.svg" alt="" width="16" height="16">Reporting</span>
+          <span class="pill"><img src="assets/check.svg" alt="" width="16" height="16">Governance</span>
+        </div>
+      </div>
+    </div>
+    <div class="why__grid">
+      <div class="why__row">
+        <div class="why__card">
+          <span class="why__cardnum gt">02</span>
+          <h4 class="why__h4">Start on a foundation</h4>
+          <p class="why__p">A production-ready core, extended and configured around how your company actually works — built and maintained with you, not handed over. It is not an end product: it is extensible, and it is developed further around your specific needs.</p>
+        </div>
+        <div class="why__card">
+          <span class="why__cardnum gt">03</span>
+          <h4 class="why__h4">Your brand, your data, your configuration</h4>
+          <p class="why__p">White-label from day one. Every pixel, every workflow, every data field belongs to you.</p>
+        </div>
+      </div>
+      <div class="why__row">
+        <div class="why__card">
+          <span class="why__cardnum gt">04</span>
+          <h4 class="why__h4">A foundation, not a license</h4>
+          <p class="why__p">We build and maintain the platform. You keep full deployment control and own the client relationship.</p>
+        </div>
+        <div class="why__card">
+          <span class="why__cardnum gt">05</span>
+          <h4 class="why__h4">Governance built in</h4>
+          <p class="why__p">Role-based access, KYC, and audit trail — not add-ons. Compliance is structural, not a layer you bolt on later.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMPANIES THIS WORKS FOR ===================== -->
+<section class="section companies">
+  <div class="h2group">
+    <span class="eyebrow">Companies this works for</span>
+    <h2 class="h2 h2--px">The foundation is the same.<br>What you start with depends <br>on what you already have.</h2>
+  </div>
+  <div class="companies__row">
+    <article class="ccard ccard--shadow-a">
+      <img class="ccard__img" src="assets/company-1.png" alt="">
+      <span class="ccard__num gt">01</span>
+      <h4 class="ccard__h4">Investment managers</h4>
+      <p class="ccard__p">You already manage client portfolios on a platform that is showing its age. This is the fastest route to a modern client experience without the cost, risk, and timeline of building in-house.</p>
+    </article>
+    <article class="ccard ccard--shadow-a">
+      <img class="ccard__img" src="assets/company-2.png" alt="">
+      <span class="ccard__num gt">02</span>
+      <h4 class="ccard__h4">Brokers</h4>
+      <p class="ccard__p">Your execution already works. This adds a branded advisory and managed offering on top of it — onboarding, model portfolios, and client reporting — turning transaction income into recurring revenue.</p>
+    </article>
+    <article class="ccard ccard--shadow-a">
+      <img class="ccard__img" src="assets/company-3.png" alt="">
+      <span class="ccard__num gt">03</span>
+      <h4 class="ccard__h4">Fintechs and EMIs</h4>
+      <p class="ccard__p">Your engineering team is busy with your core product. This is an investment layer you embed into your own application and take to market quickly, without an eighteen-month detour.</p>
+    </article>
+    <article class="ccard ccard--shadow-b">
+      <img class="ccard__img" src="assets/company-4.png" alt="">
+      <span class="ccard__num gt">04</span>
+      <h4 class="ccard__h4">Financial publishers and research advisories</h4>
+      <p class="ccard__p">You have the audience and the investment views. Turning subscribers into clients whose portfolios you manage requires onboarding, model portfolios, reporting, and governance — a layer publishing has never needed.</p>
+    </article>
+    <article class="ccard ccard--shadow-a">
+      <img class="ccard__img" src="assets/company-5.png" alt="">
+      <span class="ccard__num gt">05</span>
+      <h4 class="ccard__h4">Fintechs and EMIs</h4>
+      <p class="ccard__p">Your engineering team is busy with your core product. This is an investment layer you embed into your own application and take to market quickly, without an eighteen-month detour.</p>
+    </article>
+    <article class="ccard ccard--shadow-b">
+      <img class="ccard__img" src="assets/company-6.png" alt="">
+      <span class="ccard__num gt">06</span>
+      <h4 class="ccard__h4">Financial publishers and research advisories</h4>
+      <p class="ccard__p">You have the audience and the investment views. Turning subscribers into clients whose portfolios you manage requires onboarding, model portfolios, reporting, and governance — a layer publishing has never needed.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== FEATURES ===================== -->
+<section class="section features">
+  <div class="h2group">
+    <span class="eyebrow">What you start with on day one</span>
+    <h2 class="h2 h2--intrinsic features__h2"><span class="gt-slice">As full and as flexible as you need </span><br>it to be — from day one.</h2>
+    <p class="desc desc--1200">Pre-built modules, configured to your business and branded as yours.</p>
+  </div>
+  <div class="features__cards">
+    <div class="features__row features__row--1">
+      <article class="fcard">
+        <div class="fcard__img"><picture><source media="(min-width: 641px) and (max-width: 768px)" srcset="assets/feature-portrait/customer-investment.png"><img src="assets/feature-customer-investment.png" alt="" width="438" height="296"></picture></div>
+        <div class="fcard__body">
+          <div class="fcard__text">
+            <h3 class="fcard__h3">Customer Investment Management</h3>
+            <p class="fcard__p">Manage all aspects of your customer relationships and investments in one unified platform.
+
+•  Unified customer profiles with complete history
+•  Investment portfolios management
+•  Comprehensive portfolio analytics
+•  Rebalance portfolios with powerful automation tools</p>
+          </div>
+          <a class="btn btn--link btn--flush" href="#">Read More</a>
+        </div>
+      </article>
+      <article class="fcard">
+        <div class="fcard__img"><picture><source media="(min-width: 641px) and (max-width: 768px)" srcset="assets/feature-portrait/customer-portal.png"><img src="assets/feature-customer-portal.png" alt="" width="438" height="296"></picture></div>
+        <div class="fcard__body">
+          <div class="fcard__text">
+            <h3 class="fcard__h3">Customer Portal</h3>
+            <p class="fcard__p">Give your clients the transparency and access they expect with a modern portal experience.
+
+▪ Easy access to all investment data
+▪ Real-time performance tracking
+▪ Streamlined KYC and onboarding workflows</p>
+          </div>
+          <a class="btn btn--link btn--flush" href="#">Read More</a>
+        </div>
+      </article>
+      <article class="fcard">
+        <div class="fcard__img"><picture><source media="(min-width: 641px) and (max-width: 768px)" srcset="assets/feature-portrait/model-portfolio.png"><img src="assets/feature-model-portfolio.png" alt="" width="438" height="296"></picture></div>
+        <div class="fcard__body">
+          <div class="fcard__text">
+            <h3 class="fcard__h3">Model Portfolio Management</h3>
+            <p class="fcard__p">Build and manage model portfolios with ease.
+
+▪ Centralized portfolio strategy and versioning
+▪ Automated portfolio management system
+▪ Historical back-test design and analysis</p>
+          </div>
+          <a class="btn btn--link btn--flush" href="#">Read More</a>
+        </div>
+      </article>
+    </div>
+    <div class="features__row features__row--2">
+      <article class="fcard">
+        <div class="fcard__img"><picture><source media="(min-width: 641px) and (max-width: 768px)" srcset="assets/feature-portrait/ai-intelligence.png"><img src="assets/feature-ai-intelligence.png" alt="" width="438" height="296"></picture></div>
+        <div class="fcard__body">
+          <div class="fcard__text">
+            <h3 class="fcard__h3">AI-Driven Intelligence</h3>
+            <p class="fcard__p">Leverage AI-driven insights to optimize portfolio performance and grow executable insights.
+
+▪ AI-powered backtests for smart portfolios
+▪ Predictive analytics for customer analytics
+▪ Automated discovery and risk estimation</p>
+          </div>
+          <a class="btn btn--link btn--flush" href="#">Read More</a>
+        </div>
+      </article>
+      <article class="fcard">
+        <div class="fcard__img"><picture><source media="(min-width: 641px) and (max-width: 768px)" srcset="assets/feature-portrait/operational-excellence.png"><img src="assets/feature-operational-excellence.png" alt="" width="438" height="296"></picture></div>
+        <div class="fcard__body">
+          <div class="fcard__text">
+            <h3 class="fcard__h3">Operational Excellence</h3>
+            <p class="fcard__p">Streamline your operations and eliminate manual processes with intelligent automation.
+
+•  Risk-based language access management
+•  Automated workflow and tax scheduling
+•  Process information for routine tasks
+•  Compliance and audit risk management</p>
+          </div>
+          <a class="btn btn--link btn--flush" href="#">Read More</a>
+        </div>
+      </article>
+      <article class="fcard">
+        <div class="fcard__img"><picture><source media="(min-width: 641px) and (max-width: 768px)" srcset="assets/feature-portrait/customer-portal.png"><img src="assets/feature-customer-portal.png" alt="" width="438" height="296"></picture></div>
+        <div class="fcard__body">
+          <div class="fcard__text">
+            <h3 class="fcard__h3">Customer Portal</h3>
+            <p class="fcard__p">Give your clients the transparency and access they expect with a modern portal experience.
+
+▪ Easy access to all investment data
+▪ Real-time performance tracking
+▪ Streamlined KYC and onboarding workflows</p>
+          </div>
+          <a class="btn btn--link btn--flush" href="#">Read More</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THREE WAYS ===================== -->
+<section class="section three">
+  <div class="h2group">
+    <span class="eyebrow">Companies this works for</span>
+    <div class="h2group__inner">
+      <h2 class="h2 h2--px h2--940">Three ways to a live platform</h2>
+      <p class="desc desc--1200">We have developed a foundation for companies that, for various reasons, are not ready to use off-the-shelf solutions. Ready-made products are not always the right fit — they may lack the functionality you need, and customizing them can be expensive. So what should these companies do? Build from scratch? That is costly, takes a long time to develop, and creates ongoing maintenance challenges. We offer an alternative. Our foundation is not an end product. It is extensible, and it is customized and developed further around your specific needs.</p>
+    </div>
+  </div>
+  <div class="three__row">
+    <article class="ocard">
+      <div class="ocard__top">
+        <div class="ocard__label">OPTION ONE</div>
+        <div class="ocard__hp">
+          <h4 class="ocard__h4">Buy a ready-made platform</h4>
+          <div class="ocard__pbox"><p class="ocard__p">Fast to sign, slow to fit. You adapt your processes to the product, and the parts that don't match stay unsolved.</p></div>
+        </div>
+      </div>
+      <div class="ocard__rows">
+        <div class="ocard__r"><span class="ocard__rl">TIME</span><span class="ocard__rv">Weeks</span></div>
+        <div class="ocard__sep"></div>
+        <div class="ocard__r"><span class="ocard__rl">COST</span><span class="ocard__rv">Low upfront, high to customize</span></div>
+        <div class="ocard__sep"></div>
+        <div class="ocard__r"><span class="ocard__rl">FIT</span><span class="ocard__rv">Whatever the product does</span></div>
+      </div>
+    </article>
+    <article class="ocard">
+      <div class="ocard__top">
+        <div class="ocard__label">OPTION TWO</div>
+        <div class="ocard__hp">
+          <h4 class="ocard__h4">Build from scratch</h4>
+          <div class="ocard__pbox"><p class="ocard__p">Full control, full cost. Up to two years of engineering, then permanent responsibility for maintenance, security, and regulatory change.</p></div>
+        </div>
+      </div>
+      <div class="ocard__rows">
+        <div class="ocard__r"><span class="ocard__rl">TIME</span><span class="ocard__rv">Up to 24 months</span></div>
+        <div class="ocard__sep"></div>
+        <div class="ocard__r"><span class="ocard__rl">COST</span><span class="ocard__rv">Highest, and never finished</span></div>
+        <div class="ocard__sep"></div>
+        <div class="ocard__r"><span class="ocard__rl">FIT</span><span class="ocard__rv">Exact, eventually</span></div>
+      </div>
+    </article>
+    <article class="ocard ocard--best">
+      <div class="ocard__best-inner">
+        <div class="ocard__top">
+          <div class="ocard__label gt-block">THE BEST OPTION</div>
+          <div class="ocard__hp">
+            <h4 class="ocard__h4">Start on a foundation</h4>
+            <div class="ocard__pbox"><p class="ocard__p">A production-ready core, extended and configured around how your company actually works — built and maintained with you, not handed over. It is not an end product: it is extensible, and it is developed further around your specific needs.</p></div>
+          </div>
+        </div>
+        <div class="ocard__rows">
+          <div class="ocard__r"><span class="ocard__rl gt">TIME</span><span class="ocard__rv">Months, not years</span></div>
+          <div class="ocard__sep"></div>
+          <div class="ocard__r"><span class="ocard__rl gt">COST</span><span class="ocard__rv">You pay to fit it, not to build it</span></div>
+          <div class="ocard__sep"></div>
+          <div class="ocard__r"><span class="ocard__rl gt">FIT</span><span class="ocard__rv">Built around your model</span></div>
+        </div>
+      </div>
+      <a class="btn btn--white" href="#demo" data-open-demo>Book a Demo</a>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== 24 MONTHS ===================== -->
+<section class="section months">
+  <div class="months__top">
+    <div class="months__left">
+      <h2 class="months__h2">24 months <span class="months__white">of your work</span> already done</h2>
+      <p class="months__sub">Accelerate time to market compared with building a platform from scratch.</p>
+    </div>
+  </div>
+  <!-- Roadmaps: both tracks are 24 months long; every stop sits at its month (--at) on that scale -->
+  <div class="months__maps">
+    <div class="rmap rmap--fade" style="--total: 24; --span: 4">
+      <div class="rmap__head"><span class="rmap__who">FinStarter:</span><span class="rmap__muted">live in</span><span class="rmap__eta">~4 months</span></div>
+      <div class="rmap__track">
+        <div class="rmap__line"></div>
+        <div class="rmap__note" style="--from: 4; --to: 24">Time spent on your business instead</div>
+        <div class="rmap__stop rmap__stop--top rmap__stop--start" style="--at: 0"><span class="rmap__node"></span><span class="rmap__label"><span>Discovery</span></span></div>
+        <div class="rmap__stop rmap__stop--bottom" style="--at: 1"><span class="rmap__node"></span><span class="rmap__label"><span>Configuration</span></span></div>
+        <div class="rmap__stop rmap__stop--top" style="--at: 2"><span class="rmap__node"></span><span class="rmap__label"><span>Integration</span></span></div>
+        <div class="rmap__stop rmap__stop--bottom rmap__stop--launch" style="--at: 4"><span class="rmap__node"></span><span class="rmap__label"><span>Launch</span><small>(~4 months)</small></span></div>
+      </div>
+    </div>
+    <div class="rmap" style="--total: 24; --lag: 0.6s">
+      <div class="rmap__head"><span class="rmap__who">Build from scratch:</span><span class="rmap__muted">live in</span><span class="rmap__eta">up to 24 months</span></div>
+      <div class="rmap__track">
+        <div class="rmap__line"></div>
+        <div class="rmap__stop rmap__stop--top rmap__stop--start" style="--at: 0"><span class="rmap__node"></span><span class="rmap__label"><span>Discovery</span></span></div>
+        <div class="rmap__stop rmap__stop--bottom" style="--at: 2"><span class="rmap__node"></span><span class="rmap__label"><span>Architecture</span></span></div>
+        <div class="rmap__stop rmap__stop--top" style="--at: 5"><span class="rmap__node"></span><span class="rmap__label"><span>Core build</span></span></div>
+        <div class="rmap__stop rmap__stop--bottom" style="--at: 17"><span class="rmap__node"></span><span class="rmap__label"><span>Integrations</span></span></div>
+        <div class="rmap__stop rmap__stop--top" style="--at: 19.5"><span class="rmap__node"></span><span class="rmap__label"><span>Compliance hardening</span></span></div>
+        <div class="rmap__stop rmap__stop--bottom rmap__stop--launch rmap__stop--end" style="--at: 24"><span class="rmap__node"></span><span class="rmap__label"><span>Launch</span><small>(up to 24 months)</small></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="months__grid">
+    <div class="months__row">
+      <article class="mcard"><h4 class="mcard__h4">One stack, not five vendors</h4><p class="mcard__p">Consolidate technology instead of assembling multiple point solutions.</p></article>
+      <article class="mcard"><h4 class="mcard__h4">Pre-built workflows</h4><p class="mcard__p">Reduce development effort by starting with pre-built investment workflows.</p></article>
+      <article class="mcard"><h4 class="mcard__h4">Your brand only</h4><p class="mcard__p">Launch a branded investor experience under your own brand.</p></article>
+      <article class="mcard"><h4 class="mcard__h4">Fits your model</h4><p class="mcard__p">Adapt the platform to specific workflows rather than a rigid off-the-shelf product.</p></article>
+    </div>
+    <div class="months__row">
+      <article class="mcard"><h4 class="mcard__h4">Less manual work</h4><p class="mcard__p">Automate investment operations and reduce manual processing.</p></article>
+      <article class="mcard"><h4 class="mcard__h4">Scales with the book</h4><p class="mcard__p">Scale investment management operations as the client base grows.</p></article>
+      <article class="mcard"><h4 class="mcard__h4">Transparency for clients</h4><p class="mcard__p">Improve investor transparency through the customer portal.</p></article>
+      <article class="mcard"><h4 class="mcard__h4">Audit-ready by default</h4><p class="mcard__p">Strengthen governance and auditability.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="section faq">
+  <div class="h2group">
+    <span class="eyebrow eyebrow--nocase">FAQs</span>
+    <div class="h2group__inner">
+      <h2 class="h2 h2--px h2--940">Questions before a demo</h2>
+    </div>
+  </div>
+  <div class="faq__list">
+    <div class="qa">
+      <button class="qa__head" type="button" aria-expanded="false" aria-controls="qa-1">
+        <h4 class="qa__q">What is FinStarter?</h4>
+        <span class="qa__icon" aria-hidden="true"></span>
+      </button>
+      <div class="qa__body" id="qa-1"><div class="qa__answer"><p>A production-ready, white-label foundation for digital investment platforms. It covers the client portal, portfolio operations and governance in a single stack, and Itransition builds your platform on top of it.</p></div></div>
+    </div>
+    <div class="qa is-open">
+      <button class="qa__head" type="button" aria-expanded="true" aria-controls="qa-2">
+        <h4 class="qa__q">Who can benefit from FinStarter?</h4>
+        <span class="qa__icon" aria-hidden="true"></span>
+      </button>
+      <div class="qa__body" id="qa-2"><div class="qa__answer"><p>Investment managers, brokers, fintechs and EMIs, and financial publishers with an audience — any firm that manages clients' investments and wants to launch or modernize its platform without an 18–24 month build.</p></div></div>
+    </div>
+    <div class="qa">
+      <button class="qa__head" type="button" aria-expanded="false" aria-controls="qa-3">
+        <h4 class="qa__q">How long does a FinStarter implementation take?</h4>
+        <span class="qa__icon" aria-hidden="true"></span>
+      </button>
+      <div class="qa__body" id="qa-3"><div class="qa__answer"><p>Typically around four months from kick-off to a live platform, depending on your integrations and the scope of configuration. A comparable build from scratch takes up to 24 months.</p></div></div>
+    </div>
+    <div class="qa">
+      <button class="qa__head" type="button" aria-expanded="false" aria-controls="qa-4">
+        <h4 class="qa__q">How much does a FinStarter implementation cost?</h4>
+        <span class="qa__icon" aria-hidden="true"></span>
+      </button>
+      <div class="qa__body" id="qa-4"><div class="qa__answer"><p>You pay to fit the foundation to your business, not to build it from zero. The price depends on the modules you start with and the integrations you need — after a short discovery call we give you a fixed estimate.</p></div></div>
+    </div>
+    <div class="qa">
+      <button class="qa__head" type="button" aria-expanded="false" aria-controls="qa-5">
+        <h4 class="qa__q">Where is the platform hosted?</h4>
+        <span class="qa__icon" aria-hidden="true"></span>
+      </button>
+      <div class="qa__body" id="qa-5"><div class="qa__answer"><p>In your own cloud account or on infrastructure managed by Itransition — AWS, Azure or Google Cloud, in the region your regulator requires. Either way you keep full deployment control and own the data.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BACKED BY ITRANSITION ===================== -->
+<section class="section backed">
+  <div class="h2group h2group--1440">
+    <span class="eyebrow">Backed by an engineering company</span>
+    <h2 class="h2 h2--px h2--940 backed__h2">FinStarter is built and backed <br>by <a class="rainbow" href="https://www.itransition.com/" target="_blank" rel="noopener">Itransition</a></h2>
+    <p class="desc">Behind it stands an engineering company that has been in this market for twenty-eight years — and intends to stay in it.</p>
+  </div>
+  <div class="backed__nums">
+    <div class="nmbr"><span class="nmbr__v gt">1998</span><span class="nmbr__l">In business since</span></div>
+    <div class="nmbr"><span class="nmbr__v gt">800+</span><span class="nmbr__l">Organizations served</span></div>
+    <div class="nmbr"><span class="nmbr__v gt">3,000+</span><span class="nmbr__l">Employees</span></div>
+    <div class="nmbr"><span class="nmbr__v gt">40</span><span class="nmbr__l">Countries</span></div>
+  </div>
+  <div class="backed__cols">
+    <p class="backed__p">Since 1998, Itransition has delivered software for more than 800 organizations across 40 countries, with over 3,000 employees. We work across capital markets, investment management, insurance, and payments — regulated environments where uptime, auditability, and change control are not optional.</p>
+    <p class="backed__p">That matters most after launch. A platform that handles client money needs someone accountable for it for as long as it runs — for the security patch, the regulatory change, the integration that breaks years from now. That is the part we do not hand over.</p>
+  </div>
+</section>
+
+<!-- ===================== BANNER + FOOTER ===================== -->
+<!-- .tail: the banner and the footer share one set of soft shapes behind them (styles.css: BLOBS) -->
+<div class="tail">
+<div class="blobs" aria-hidden="true"><i class="blob blob--1"></i><i class="blob blob--2"></i><i class="blob blob--3"></i></div>
+<section class="section banner">
+  <div class="banner__content">
+    <div class="banner__title">
+      <div class="banner__h1group">
+        <div class="eyebrow-row"><span class="eyebrow">AI-DRIVEN</span></div>
+        <div class="eyebrow-row"><h1 class="banner__h1"><span class="gt-slice">Launch or modernize </span><br>your investment platform</h1></div>
+      </div>
+      <p class="hero__sub">Book a 30-minute demo — we'll show you the platform live, configured for your business.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--link" href="contact.html">Contact us</a>
+      <a class="btn btn--dark" href="#demo" data-open-demo>Book a Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <a href="#"><img src="assets/logo-footer.svg" alt="FinStarter" width="155" height="32"></a>
+      <p class="footer__tagline">White-label infrastructure for the next generation of invetsment platforms.</p>
+      <div class="footer__powered"><span>powered by</span><a class="footer__powered-link" href="https://www.itransition.com/" target="_blank" rel="noopener">Itransition</a></div>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <div class="footer__title">TITLE</div>
+        <div class="footer__links footer__links--fill">
+          <a href="#">Client portal</a>
+          <a href="#">Portfolio management</a>
+          <a href="#">Analytics</a>
+          <a href="#">Reporting</a>
+          <a href="#">Customer and lifecycle management</a>
+          <a href="#">Model portfolio engine</a>
+          <a href="#">Audit trail</a>
+          <a href="#">Al strategy validation</a>
+          <a href="#">Governance</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <div class="footer__title">TITLE</div>
+        <div class="footer__links">
+          <a href="how-it-works.html">How it works</a>
+          <a href="#">About Itransition</a>
+          <a href="#">Business Login</a>
+          <a href="#">Customer Portal</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <div class="footer__title">TITLE</div>
+        <div class="footer__links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Itransition Group Ltd. All rights reserved.</span>
+    <div class="footer__contact">
+      <a class="footer__mail" href="mailto:contact@finstarter.net">contact@finstarter.net</a>
+      <span class="footer__sep">|</span>
+      <span class="footer__loc">Decatur, GA</span>
+    </div>
+  </div>
+</footer>
+</div>
+
+<!-- ===================== BOOK A DEMO — MODAL ===================== -->
+<div class="modal" id="demo-modal" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="demo-title" tabindex="-1">
+    <button class="modal__close" type="button" data-close aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="modal__view modal__view--form">
+      <div class="modal__head">
+        <h2 class="modal__title" id="demo-title">Book your demo</h2>
+        <p class="modal__sub">30 minutes, live, configured for your business.</p>
+      </div>
+
+      <form class="form" id="demo-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="f-name">Full name <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="field__input" id="f-name" name="name" type="text" placeholder="John Doe" autocomplete="name" required>
+          <span class="field__error" id="f-name-err"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-email">Work email <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="field__input" id="f-email" name="email" type="email" placeholder="email@company.com" autocomplete="email" required>
+          <span class="field__error" id="f-email-err"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-company">Company name <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="field__input" id="f-company" name="company" type="text" placeholder="Company" autocomplete="organization" required>
+          <span class="field__error" id="f-company-err"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-phone">Phone number</label>
+          <input class="field__input" id="f-phone" name="phone" type="tel" placeholder="+1 555 000 0000" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-message">Message</label>
+          <textarea class="field__input field__input--area" id="f-message" name="message" rows="4" placeholder="Tell us about your needs"></textarea>
+        </div>
+        <button class="btn btn--dark form__submit" type="submit">
+          <span>Book a Demo</span>
+          <svg class="form__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form__note">By submitting you agree to be contacted about FinStarter. No newsletters.</p>
+      </form>
+    </div>
+
+    <div class="modal__view modal__view--done" hidden>
+      <div class="done__icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 14.5l5.5 5.5L22 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 class="modal__title">Request received</h2>
+      <p class="modal__sub">Thanks! We'll get back to you within one business day to pick a time.</p>
+      <button class="btn btn--dark done__close" type="button" data-close>Done</button>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

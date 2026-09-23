@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact us — FinStarter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="contact.css">
+<link rel="stylesheet" href="responsive.css">
+<script src="site.js" defer></script>
+<script src="contact.js" defer></script>
+</head>
+<body>
+
+<!-- ===================== NAVIGATION ===================== -->
+<header class="nav">
+  <div class="nav__wrap">
+    <a class="nav__logo" href="index.html"><img class="nav__logo-dark" src="assets/logo-nav.svg" alt="FinStarter" width="116" height="24"><img class="nav__logo-light" src="assets/logo-nav-light.svg" alt="" width="116" height="24"></a>
+    <nav class="nav__menu" id="site-menu">
+      <a class="nav__item" href="index.html">Home</a>
+      <a class="nav__item" href="how-it-works.html">How it works</a>
+      <div class="nav__dd">
+        <a class="nav__item nav__item--dd" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="dd-built">Built for you<svg class="nav__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6.5L8 10.5L12 6.5" stroke="currentColor"/></svg></a>
+        <div class="dropdown" id="dd-built">
+          <div class="dropdown__group">
+            <div class="dropdown__label">PORTFOLIO OPERATIONS</div>
+            <a class="dropdown__item" href="#">Portfolio management</a>
+            <a class="dropdown__item" href="#">Model portfolio engine</a>
+            <a class="dropdown__item" href="#">AI strategy validation</a>
+          </div>
+          <div class="dropdown__group">
+            <div class="dropdown__label">PORTFOLIO OPERATIONS</div>
+            <a class="dropdown__item" href="#">Client portal</a>
+            <a class="dropdown__item" href="#">Customer and lifecycle management</a>
+          </div>
+          <div class="dropdown__group">
+            <div class="dropdown__label">INTELLIGENCE AND GOVERNANCE</div>
+            <a class="dropdown__item" href="#">Analytics</a>
+            <a class="dropdown__item" href="#">Reporting</a>
+            <a class="dropdown__item" href="#">Audit trail</a>
+          </div>
+        </div>
+      </div>
+      <a class="nav__item" href="#">Pricing</a>
+      <a class="nav__item" href="contact.html">Contact</a>
+    </nav>
+    <a class="nav__btn" href="#demo" data-open-demo>Book a Demo</a>
+    <button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===================== CONTACT US ===================== -->
+<section class="section contact">
+  <div class="contact__wrap">
+    <div class="contact__head">
+      <span class="eyebrow">Stay in touch</span>
+      <h1 class="h2 h2--px contact__h1">Contact us</h1>
+    </div>
+
+    <div class="contact__intro">
+      <p class="contact__lead">Drop us a line about your project at <a class="contact__mail" href="mailto:contact@finstarter.net">contact@finstarter.net</a> or via the contact form below, and we will contact you within a business day.</p>
+      <p class="contact__note">All submitted information will be kept confidential.</p>
+    </div>
+
+    <div class="contact__view contact__view--form">
+      <form class="form cform" id="contact-form" novalidate>
+        <div class="cform__grid">
+          <div class="field">
+            <label class="field__label" for="c-name">Full name <span class="field__req" aria-hidden="true">*</span></label>
+            <input class="field__input" id="c-name" name="name" type="text" placeholder="John Doe" autocomplete="name" required>
+            <span class="field__error" id="c-name-err"></span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="c-email">E-mail <span class="field__req" aria-hidden="true">*</span></label>
+            <input class="field__input" id="c-email" name="email" type="email" placeholder="email@company.com" autocomplete="email" required>
+            <span class="field__error" id="c-email-err"></span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="c-phone">Phone number</label>
+            <input class="field__input" id="c-phone" name="phone" type="tel" placeholder="+1 555 000 0000" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label class="field__label" for="c-company">Company</label>
+            <input class="field__input" id="c-company" name="company" type="text" placeholder="Company" autocomplete="organization">
+          </div>
+          <div class="field cform__full">
+            <label class="field__label" for="c-message">How can we help you?</label>
+            <textarea class="field__input field__input--area cform__area" id="c-message" name="message" rows="8" placeholder="Tell us about your project"></textarea>
+          </div>
+        </div>
+
+        <div class="cform__bottom">
+          <div class="cform__attach">
+            <div class="cform__attach-row">
+              <label class="btn btn--outline cform__attach-btn" for="c-file">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10.5 5.5 6.2 9.8a1.5 1.5 0 0 0 2.1 2.1l4.6-4.6a3 3 0 0 0-4.2-4.2L4 7.8a4.5 4.5 0 0 0 6.4 6.4l3.6-3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Attach file
+              </label>
+              <input class="cform__file" id="c-file" name="files" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.png,.jpg,.jpeg,.txt">
+              <span class="tip">
+                <button class="tip__btn" type="button" aria-label="Allowed file formats" aria-describedby="c-file-tip">?</button>
+                <span class="tip__bubble" id="c-file-tip" role="tooltip">Allowed formats: pdf, doc, docx, xls, xlsx, ppt, pptx, png, jpg, txt. Maximum 10 MB per file.</span>
+              </span>
+            </div>
+            <ul class="cform__files" id="c-files" aria-live="polite"></ul>
+            <span class="field__error" id="c-file-err"></span>
+          </div>
+        </div>
+
+        <div class="cform__submit">
+          <button class="btn btn--dark cform__send" type="submit">
+            <span>Send</span>
+            <svg class="form__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <p class="cform__privacy">Please be informed that when you click the Send button Itransition Group will process your personal data <br>in accordance with our <a href="https://www.itransition.com/privacy-notice" target="_blank" rel="noopener">Privacy notice</a> for the purpose of providing you with appropriate information.</p>
+      </form>
+    </div>
+
+    <div class="contact__view contact__view--done" hidden>
+      <div class="done__icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 14.5l5.5 5.5L22 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 class="modal__title">Message sent</h2>
+      <p class="modal__sub">Thanks! We'll get back to you within a business day.</p>
+      <a class="btn btn--dark done__close" href="index.html">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <a href="#"><img src="assets/logo-footer.svg" alt="FinStarter" width="155" height="32"></a>
+      <p class="footer__tagline">White-label infrastructure for the next generation of invetsment platforms.</p>
+      <div class="footer__powered"><span>powered by</span><a class="footer__powered-link" href="https://www.itransition.com/" target="_blank" rel="noopener">Itransition</a></div>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <div class="footer__title">TITLE</div>
+        <div class="footer__links footer__links--fill">
+          <a href="#">Client portal</a>
+          <a href="#">Portfolio management</a>
+          <a href="#">Analytics</a>
+          <a href="#">Reporting</a>
+          <a href="#">Customer and lifecycle management</a>
+          <a href="#">Model portfolio engine</a>
+          <a href="#">Audit trail</a>
+          <a href="#">Al strategy validation</a>
+          <a href="#">Governance</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <div class="footer__title">TITLE</div>
+        <div class="footer__links">
+          <a href="how-it-works.html">How it works</a>
+          <a href="#">About Itransition</a>
+          <a href="#">Business Login</a>
+          <a href="#">Customer Portal</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <div class="footer__title">TITLE</div>
+        <div class="footer__links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Itransition Group Ltd. All rights reserved.</span>
+    <div class="footer__contact">
+      <a class="footer__mail" href="mailto:contact@finstarter.net">contact@finstarter.net</a>
+      <span class="footer__sep">|</span>
+      <span class="footer__loc">Decatur, GA</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== BOOK A DEMO — MODAL ===================== -->
+<div class="modal" id="demo-modal" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="demo-title" tabindex="-1">
+    <button class="modal__close" type="button" data-close aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="modal__view modal__view--form">
+      <div class="modal__head">
+        <h2 class="modal__title" id="demo-title">Book your demo</h2>
+        <p class="modal__sub">30 minutes, live, configured for your business.</p>
+      </div>
+
+      <form class="form" id="demo-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="f-name">Full name <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="field__input" id="f-name" name="name" type="text" placeholder="John Doe" autocomplete="name" required>
+          <span class="field__error" id="f-name-err"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-email">Work email <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="field__input" id="f-email" name="email" type="email" placeholder="email@company.com" autocomplete="email" required>
+          <span class="field__error" id="f-email-err"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-company">Company name <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="field__input" id="f-company" name="company" type="text" placeholder="Company" autocomplete="organization" required>
+          <span class="field__error" id="f-company-err"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-phone">Phone number</label>
+          <input class="field__input" id="f-phone" name="phone" type="tel" placeholder="+1 555 000 0000" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-message">Message</label>
+          <textarea class="field__input field__input--area" id="f-message" name="message" rows="4" placeholder="Tell us about your needs"></textarea>
+        </div>
+        <button class="btn btn--dark form__submit" type="submit">
+          <span>Book a Demo</span>
+          <svg class="form__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form__note">By submitting you agree to be contacted about FinStarter. No newsletters.</p>
+      </form>
+    </div>
+
+    <div class="modal__view modal__view--done" hidden>
+      <div class="done__icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 14.5l5.5 5.5L22 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 class="modal__title">Request received</h2>
+      <p class="modal__sub">Thanks! We'll get back to you within one business day to pick a time.</p>
+      <button class="btn btn--dark done__close" type="button" data-close>Done</button>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

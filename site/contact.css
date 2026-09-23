@@ -1,0 +1,179 @@
+/* =========================================================
+   FinStarter — Contact us
+   Fields, buttons, validation and success state reuse the modal styles
+   from styles.css; only the page layout and the attach/tooltip bits live here.
+   ========================================================= */
+
+.contact { position: relative; min-height: 70vh; }
+.contact > :not(.liquid) { position: relative; z-index: 1; }
+.contact__wrap {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.contact__head { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.contact__h1 { text-align: left; }
+
+/* lead runs the full content width; the confidentiality note sits under it, right-aligned */
+.contact__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact__lead {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  letter-spacing: -0.26px;
+  color: var(--ink);
+}
+.contact__note { align-self: flex-start; font-weight: 400; font-size: 13px; line-height: 18px; color: var(--grey); }
+.contact__mail { color: var(--blue); }
+.contact__mail:hover { text-decoration: underline; }
+
+/* ---------- form ---------- */
+.cform { gap: 24px; }
+.cform__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+}
+.cform__full { grid-column: 1 / -1; }
+.cform__area { min-height: 240px; }
+
+/* attach row, then Send on its own row (right), then the privacy note under it */
+.cform__bottom { display: flex; align-items: flex-start; }
+.cform__attach { display: flex; flex-direction: column; gap: 10px; }
+.cform__attach-row { display: flex; align-items: center; gap: 12px; }
+.cform__file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+/* outline pill — the light-surface secondary button */
+.btn--outline {
+  gap: 8px;
+  border: 1px solid rgba(18, 20, 23, 0.16);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.btn--outline:hover { border-color: var(--ink); background: var(--surface); }
+.cform__file:focus-visible + .tip .tip__btn,
+.cform__attach-btn:focus-within { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.cform__files { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.cform__files:empty { display: none; }
+.cform__filechip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 8px 10px 8px 14px;
+  border-radius: 980px;
+  background: var(--surface);
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--ink);
+}
+.cform__filechip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 260px; }
+.cform__filechip small { color: var(--grey); }
+.cform__filechip button {
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(18, 20, 23, 0.06);
+  color: var(--ink);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+.cform__filechip button:hover { background: rgba(18, 20, 23, 0.12); }
+
+.cform__privacy {
+  align-self: flex-end;
+  max-width: none;    /* two lines, break set in the markup */
+  margin-top: -8px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: right;
+  color: var(--grey);
+}
+.cform__privacy a { color: var(--blue); }
+.cform__privacy a:hover { text-decoration: underline; }
+
+.cform__submit { display: flex; justify-content: flex-end; }
+.cform__send { min-width: 160px; gap: 10px; font: inherit; font-weight: 500; font-size: 18px; cursor: pointer; }
+
+/* ---------- "?" tooltip ---------- */
+.tip { position: relative; display: inline-flex; }
+.tip__btn {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1.5px solid var(--grey);
+  border-radius: 50%;
+  background: none;
+  color: var(--grey);
+  font: inherit;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  cursor: help;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.tip__btn:hover, .tip__btn:focus-visible { color: var(--ink); border-color: var(--ink); outline: none; }
+.tip__bubble {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  width: 280px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  line-height: 18px;
+  transform: translate(-50%, 4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+  z-index: 5;
+}
+.tip__bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  border: 6px solid transparent;
+  border-top-color: var(--ink);
+  transform: translateX(-50%);
+}
+.tip:hover .tip__bubble, .tip:focus-within .tip__bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s;
+}
+
+/* ---------- success ---------- */
+.contact__view--done {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0 24px;
+}
+.contact__view--done .modal__sub { max-width: 420px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tip__bubble { transition: none; }
+}

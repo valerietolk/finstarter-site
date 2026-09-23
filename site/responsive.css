@@ -1,0 +1,408 @@
+/* =========================================================
+   FinStarter — responsive layer (laptop → tablet)
+   Loaded after styles.css. Desktop (≥1281px) is untouched by this file
+   except the burger button, which is hidden there.
+   Breakpoints:  ≤1280 laptop · ≤1024 tablet landscape · ≤900 burger nav · ≤768 tablet portrait · ≤640 phone
+   ========================================================= */
+
+/* burger button — desktop hidden; on tablet/mobile it sits first (left), no background */
+.nav__burger {
+  display: none;
+  order: -1;
+  width: 40px;
+  height: 40px;
+  margin-left: -11px; /* optically align the 18px lines with the left edge of the content */
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.nav__burger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--ink);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.nav.is-menu-open .nav__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav.is-menu-open .nav__burger span:nth-child(2) { opacity: 0; }
+.nav.is-menu-open .nav__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- ≤1280: laptop ---------- */
+@media (max-width: 1280px) {
+  .nav__menu { width: auto; gap: 32px; }
+
+  .footer { padding: 24px 32px 16px; }
+  .footer__cols { width: auto; flex: 1 1 60%; }
+  .footer__brand { flex: 1 1 40%; }
+
+
+  .companies__row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto minmax(0, 1fr);
+    height: calc(534px * 2 + 16px);
+  }
+  .ccard { min-width: 0; }
+
+  .rmap__label, .rmap__note { font-size: 13px; line-height: 17px; }  /* keeps the 4 FinStarter labels apart on a laptop */
+}
+
+/* ---------- ≤1024: tablet landscape ---------- */
+@media (max-width: 1024px) {
+  .section { padding: 64px 24px; gap: 40px; }
+  .hero { padding: 64px 24px 0; }
+
+  /* headings: drop the desktop line breaks from Figma and let the browser
+     balance lines — no more one-word orphans at narrow widths */
+  .hero__h1 br, .banner__h1 br, .h2 br, .months__h2 br, .why__h4 br { display: none; }
+  .hero__h1, .banner__h1, .h2, .months__h2, .why__h3, .why__h4, .ccard__h4, .fcard__h3, .ocard__h4, .mcard__h4, .modal__title {
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  .why__saved br { display: none; }
+
+  .hero__h1 { font-size: 60px; line-height: 68px; letter-spacing: -1.8px; }
+  .h2 { font-size: 44px; letter-spacing: -1.2px; }
+  .h2--intrinsic { line-height: 52px; }
+  .h2--px { line-height: 50px; }
+  .hero .hero__sub, .banner .hero__sub { font-size: 20px; line-height: 26px; }
+  .banner__h1 { font-size: 60px; line-height: 68px; letter-spacing: -1.8px; }
+
+  .hero__scene { width: 100%; }
+
+  /* why: blue card full width, grey grid below */
+  .why__accent { width: 100%; flex: 1 1 100%; }
+  .why__grid { flex: 1 1 100%; height: auto; }
+  .why__row { flex: 0 0 auto; }
+  .why__card { min-height: 260px; }
+
+  /* features: 2 columns, rows flow */
+  .features__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .features__row { display: contents; }
+  .features__row--1, .features__row--2 { min-height: 0; }
+
+  /* three ways: stacked */
+  .three__row { flex-direction: column; height: auto; gap: 24px; }
+  .ocard { flex: 0 0 auto; }
+  .ocard__pbox { height: auto; }
+  .ocard--best { gap: 16px; }
+
+  .months__h2 { font-size: 48px; line-height: 54px; letter-spacing: -1.4px; }
+
+  /* roadmaps: below the laptop width the first track (4 stops in 1/6 of the line) can no longer
+     hold its labels, so the tracks turn vertical and sit side by side on one shared scale
+     (the FinStarter line visibly ends at 1/6 of the other). The line runs down the left edge
+     of each column, every label sits to its right — ~22px per month leaves a line of text per stop. */
+  .months__maps { flex-direction: row; align-items: flex-start; gap: 24px; }
+  .rmap { flex: 1 1 0; min-width: 0; --node: 12px; }
+  .rmap__head { flex-wrap: wrap; align-content: flex-end; gap: 0 6px; min-height: 48px; font-size: 17px; line-height: 24px; white-space: normal; } /* same height for both, so the tracks start on one line */
+  .rmap__track { width: 100%; height: 520px; margin: 10px 0 24px; }
+  .rmap__label, .rmap__note { font-size: 14px; line-height: 18px; }
+  .rmap__line {
+    left: calc(var(--node) / 2 - var(--line) / 2);
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: var(--line);
+    height: auto;
+    background: linear-gradient(180deg, #3cffff 0%, #006aff 100%);
+    transform-origin: center top;
+  }
+  .rmap--fade .rmap__line::after { inset: 0 -3px; }
+  .rmap--fade .rmap__line { background: linear-gradient(180deg, #3cffff 0%, #006aff 16.67%, var(--green) 23%, var(--green) 62%, rgba(62, 226, 127, 0) 100%); }
+  .rmap__note {
+    left: calc(var(--node) / 2 + 12px);
+    right: 0;
+    width: auto;
+    top: calc((var(--from) + var(--to)) / 2 / var(--total) * 100%);
+    bottom: auto;
+    transform: translateY(-50%);
+    text-align: left;
+    white-space: normal;
+  }
+  .rmap__stop { left: calc(var(--node) / 2); right: 0; width: auto; top: calc(var(--at) / var(--total) * 100%); height: 0; }
+  .rmap__node { top: calc(var(--node) / -2); }
+  .rmap__stop .rmap__label {
+    --vx: 0px;
+    left: calc(var(--node) / 2 + 12px);
+    right: 0;
+    top: 0;
+    bottom: auto;
+    transform: translate(var(--vx), -50%);
+    align-items: flex-start;
+    text-align: left;
+    white-space: normal;
+  }
+  .rmap--armed .rmap__stop .rmap__label { --vx: 6px; }
+  .rmap--in .rmap__stop .rmap__label { --vx: 0px; }
+  .rmap--armed .rmap__line { transform: scaleY(0); }
+  .rmap--in .rmap__line { transform: scaleY(1); }
+  .rmap--armed .rmap__note { transform: translate(6px, -50%); }
+  .rmap--in .rmap__note { transform: translate(0, -50%); }
+
+  /* months cards: 2 per row */
+  .months__row { flex-wrap: wrap; }
+  .mcard { flex: 1 1 calc(50% - 12px); height: auto; min-height: 200px; }
+
+  /* backed: numbers 2×2 */
+  .backed__nums { flex-wrap: wrap; gap: 32px 24px; }
+  .nmbr { flex: 1 1 calc(50% - 12px); }
+  .nmbr__v { font-size: 64px; line-height: 72px; letter-spacing: -1.9px; }
+  .backed__cols { gap: 40px; }
+
+  /* footer: brand row on top, three columns below */
+  .footer__top { flex-wrap: wrap; gap: 32px; }
+  .footer__brand { flex: 1 1 100%; }
+  .footer__cols { flex: 1 1 100%; width: 100%; }
+  .footer__col { padding: 0; }
+}
+
+/* ---------- ≤900: burger navigation ---------- */
+@media (max-width: 900px) {
+  .nav { padding: 0 24px; }
+  /* header row: burger · logo · (space) · Book a Demo */
+  .nav__wrap { justify-content: flex-start; gap: 16px; }
+  .nav__burger { display: flex; }
+  .nav__btn { margin-left: auto; }
+  .nav__menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 24px 16px;
+    background: rgba(255, 255, 255, 0.86);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    backdrop-filter: blur(20px) saturate(1.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+  }
+  .nav.is-menu-open .nav__menu { display: flex; }
+  .nav__item { padding: 14px 0; font-size: 16px; line-height: 20px; }
+  .nav__dd { flex-direction: column; align-items: stretch; }
+  .nav__dd .nav__item--dd { justify-content: space-between; }
+  /* dropdown becomes an inline list inside the panel */
+  .dropdown {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-radius: 12px;
+    background: var(--surface);
+    transform: none;
+    transition: none;
+    margin: 4px 0 8px;
+  }
+  .dropdown::before { display: none; }
+  .nav__dd:not(.is-open) .dropdown { display: none; }
+  .nav__dd.is-open .dropdown { display: flex; opacity: 1; visibility: visible; }
+  .nav__dd:hover:not(.is-open) .dropdown { display: none; }
+  .dropdown__group { background: transparent; }
+
+  .backed__cols { flex-direction: column; gap: 24px; }
+  .backed__p { flex: 0 0 auto; }
+}
+
+/* ---------- ≤768: tablet portrait ---------- */
+@media (max-width: 768px) {
+  .hero__h1 { font-size: 48px; line-height: 54px; letter-spacing: -1.4px; }
+  .banner__h1 { font-size: 48px; line-height: 54px; letter-spacing: -1.4px; }
+  .h2 { font-size: 36px; letter-spacing: -1px; }
+  .h2--intrinsic { line-height: 42px; }
+  .h2--px { line-height: 42px; }
+  .hero .hero__sub, .banner .hero__sub { font-size: 18px; line-height: 24px; }
+  .desc, .months__sub, .built__desc, .contact__lead { font-size: 16px; line-height: 22px; }
+
+  /* companies: one wide card under another — text left, photo on the right */
+  .companies__row {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 16px;
+  }
+  .ccard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: auto;
+    min-height: 300px;
+    padding: 28px;
+  }
+  .ccard__h4 { min-height: 0; max-width: 60%; }
+  .ccard__p { max-width: 60%; }
+  .ccard__img {
+    left: auto;
+    right: 0;
+    width: 55%;
+    object-position: right bottom;
+  }
+
+  /* why: grey cards one under another */
+  .why__row { flex-direction: column; align-items: stretch; }
+  .why__card { flex: 0 0 auto; min-height: auto; }
+
+  /* features: one card per row, horizontal — image left, text right */
+  .features__cards { display: flex; flex-direction: column; gap: 20px; }
+  .fcard { flex: 0 0 auto; flex-direction: row; align-items: stretch; padding-bottom: 0; gap: 0; }
+  /* the left column shows the portrait render (<picture>/<source media> in index.html),
+     stretched to the card's height and cropped from the centre */
+  .fcard__img { flex: 0 0 42%; width: 42%; padding: 8px 0 8px 8px; display: flex; align-items: stretch; }
+  .fcard__img img { aspect-ratio: auto; min-height: 380px; object-fit: cover; }
+  .fcard__body { flex: 1 1 auto; padding: 24px; gap: 16px; }
+  .fcard__text { gap: 12px; }
+  .fcard__h3 { min-height: 0; font-size: 22px; line-height: 27px; letter-spacing: -0.4px; }
+  .fcard__p { font-size: 15px; line-height: 22px; }
+
+  /* months cards: one per row */
+  .mcard { flex: 1 1 100%; min-height: 0; padding: 32px; }
+
+  /* footer bottom: copyright above, "email | city" stays on one line */
+  .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer__contact { justify-content: flex-start; }
+
+  .why__accent { padding: 32px; }
+  .why__h3 { font-size: 34px; line-height: 36px; }
+  .why__saved { font-size: 34px; line-height: 40px; }
+
+  .months__h2 { font-size: 44px; line-height: 50px; letter-spacing: -1.2px; }
+
+  .nmbr__v { font-size: 56px; line-height: 64px; letter-spacing: -1.6px; }
+
+  .faq__list { max-width: 100%; }
+  .modal__dialog { padding: 32px 24px; }
+  .modal__title { font-size: 32px; line-height: 36px; }
+
+  .footer__cols { flex-wrap: wrap; gap: 24px; }
+  .footer__col { flex: 1 1 calc(50% - 12px); }
+}
+
+/* ---------- ≤640: phone ---------- */
+@media (max-width: 640px) {
+  .nav { padding: 0 20px; }
+  .nav__menu { padding: 8px 20px 16px; }
+  .section { padding: 56px 20px; gap: 32px; }
+  .hero { padding: 56px 20px 0; }
+
+  .hero__h1, .banner__h1 { font-size: 40px; line-height: 46px; letter-spacing: -1.2px; }
+  .h2 { font-size: 32px; letter-spacing: -0.8px; }
+  .h2--intrinsic, .h2--px { line-height: 38px; }
+  .hero .hero__sub, .banner .hero__sub { font-size: 17px; line-height: 23px; }
+
+  /* companies: text takes the full card width, the photo becomes a band under it */
+  .ccard { padding: 24px; min-height: 0; gap: 12px; }
+  .ccard__h4, .ccard__p { max-width: none; }
+  .ccard__img {
+    position: static;
+    order: 10;
+    width: calc(100% + 48px);
+    height: 180px;
+    margin: 8px -24px -24px;
+    object-position: center;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%);
+    mask-image: linear-gradient(to bottom, transparent, #000 45%);
+  }
+
+  /* features: image on top, text under it (landscape render again) */
+  .fcard { flex-direction: column; padding-bottom: 8px; }
+  .fcard__img { flex: 0 0 auto; width: 100%; padding: 8px 8px 0; }
+  .fcard__img img { aspect-ratio: 438 / 296; min-height: 0; object-fit: fill; }
+  .fcard__body { padding: 20px 20px 8px; }
+  .fcard__h3 { font-size: 22px; line-height: 27px; }
+
+  .why__accent, .mcard { padding: 24px; }
+  .why__h3 { font-size: 30px; line-height: 34px; }
+  .why__saved { font-size: 30px; line-height: 36px; }
+  .months__h2 { font-size: 36px; line-height: 42px; letter-spacing: -1px; }
+  .months__maps { gap: 16px; }
+  .rmap__head { min-height: 60px; font-size: 15px; line-height: 20px; }
+  .rmap__track { height: 480px; }
+  .rmap__label, .rmap__note { font-size: 13px; line-height: 17px; }
+  .nmbr__v { font-size: 48px; line-height: 56px; letter-spacing: -1.4px; }
+
+  .footer { padding: 24px 20px 16px; }
+  .footer__col { flex: 1 1 100%; }
+  .modal__dialog { padding: 28px 20px; }
+}
+
+/* =========================================================
+   HOW IT WORKS — page sections (same breakpoints as above)
+   ========================================================= */
+@media (max-width: 1280px) {
+  .pay__row { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .pay__op { display: none; }
+  .pcard { flex: 1 1 calc(50% - 8px); }
+}
+@media (max-width: 1024px) {
+  .hiw-hero { padding-bottom: 64px; } /* same bottom spacing as other sections */
+  .pay__h2 { white-space: normal; max-width: 940px; }
+  .built__wrap { flex-direction: column; gap: 32px; }
+  .built__nav { width: 100%; flex: 0 0 auto; flex-direction: row; flex-wrap: wrap; gap: 24px 32px; }
+  .built__group { flex: 1 1 200px; }
+  .built__content { max-width: none; }
+  .built__slot { height: auto; aspect-ratio: 1068 / 510; }
+  .built__img { left: 3.4%; top: 4%; width: 96.6%; height: 100%; }
+  .built__title { font-size: 28px; line-height: 36px; letter-spacing: -1px; }
+
+  .rm__meta { flex: 0 0 96px; width: 96px; }
+  .rm__line { left: calc(96px + 24px + 14px); }
+
+  .yours__row { flex-direction: column; gap: 24px; }
+  .ycard { flex: 0 0 auto; }
+}
+@media (max-width: 768px) {
+  .hiw-hero .hero__sub br { display: none; }
+  .built__nav { flex-direction: column; gap: 16px; }
+  .built__items { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .built__item { width: auto; }
+  .built__slot { aspect-ratio: 4 / 3; }
+  .built__img { left: 0; top: 0; width: auto; height: 100%; }
+
+  .pcard { flex: 1 1 100%; height: auto; min-height: 0; }
+
+  .rm__item { gap: 16px; }
+  .rm__meta { flex: 0 0 72px; width: 72px; }
+  .rm__line { left: calc(72px + 16px + 14px); }
+  .rm__title { font-size: 20px; line-height: 24px; letter-spacing: -0.4px; }
+  .rm__p { font-size: 15px; line-height: 22px; }
+
+  .ycard { padding: 28px 24px; }
+}
+
+@media (max-width: 640px) {
+  .hiw-hero { padding-bottom: 56px; }
+  .built__title { font-size: 24px; line-height: 30px; letter-spacing: -0.6px; }
+  /* roadmap: the line moves to the left edge; number + date sit in a row above the title */
+  .rm__item { display: grid; grid-template-columns: 30px minmax(0, 1fr); column-gap: 16px; row-gap: 8px; }
+  .rm__node { grid-column: 1; grid-row: 1 / span 2; }
+  .rm__meta { grid-column: 2; grid-row: 1; flex: none; width: auto; flex-direction: row; align-items: center; gap: 12px; }
+  .rm__when { text-align: left; }
+  .rm__body { grid-column: 2; grid-row: 2; }
+  .rm__line { left: 14px; }
+  .ycard { padding: 24px 20px; }
+}
+
+/* =========================================================
+   CONTACT US
+   ========================================================= */
+@media (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+  .cform__grid { grid-template-columns: 1fr; }
+  .cform__submit .btn { width: 100%; }
+  .cform__privacy { max-width: none; text-align: left; align-self: stretch; margin-top: 0; }
+  .cform__privacy br { display: none; }
+  .tip__bubble { left: auto; right: -8px; transform: translate(0, 4px); }
+  .tip:hover .tip__bubble, .tip:focus-within .tip__bubble { transform: translate(0, 0); }
+  .tip__bubble::after { left: auto; right: 16px; transform: none; }
+}

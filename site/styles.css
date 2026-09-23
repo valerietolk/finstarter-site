@@ -1,0 +1,1878 @@
+/* =========================================================
+   FinStarter — Home (Figma node 14:12173, 1920 × 9249)
+   ========================================================= */
+
+:root {
+  --ink: #121417;
+  --ink-2: #08090b;
+  --grey: #86868b;
+  --grey-2: #d2d2d7;
+  --line: #e8e8ed;       /* hairlines, hover fills on light surfaces */
+  --surface: #f5f5f7;
+  --surface-2: #f0f0f3;
+  --blue: #1677ff;
+  --green: #3ee27f;      /* roadmap "after launch" colour, both pages */
+  --red: #e5484d;
+  --grad: linear-gradient(90deg, #3cffff 0%, #006aff 100%);
+  --glow-card: 0 0 24px #16a2ff;   /* highlighted card (best option / independence / your right) */
+}
+
+/* ---------- type scale (Inter) ----------
+   hero 80/96.82/-2.4 · h2 56/60.48 (67.77 intrinsic)/-1.68 · card title L 26/31.47/-0.52 ·
+   card title 23/26.45/-0.46 · section lead 18/21.78/-0.26 (400) · row title 18/24/-0.2 (600) ·
+   body 16/23.2 (400) · label 14/16.94 (600, +0.42 uppercase, +0.3 step numbers) ·
+   fine print 13/18 (400, grey).
+   Card descriptions are --grey on light and dark cards alike (a lighter grey on dark reads heavier
+   than the same weight on white); white only on the highlighted card; feature cards keep ink;
+   the photo cards (companies) use --grey-2 for legibility over the image. Hero/banner subtitles are 400. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4, p { margin: 0; font-weight: inherit; }
+img { display: block; }
+[hidden] { display: none !important; }
+
+/* ---------- shared: gradient text ---------- */
+.gt {
+  width: fit-content;   /* inside flex/grid the box stretches to the column and only the cyan end of the gradient reaches the digits */
+  max-width: 100%;
+  display: inline-block;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+/* gradient spanning the whole text box, shown only through .gt-slice runs */
+.gt-block {
+  display: block;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.gt-slice { color: transparent; -webkit-text-fill-color: transparent; }
+
+/* ---------- shared: eyebrow / h2 / description ---------- */
+.eyebrow {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.eyebrow--nocase { text-transform: none; }
+.eyebrow-row { width: 100%; display: flex; justify-content: center; }
+
+.section {
+  width: 100%;
+  padding: 80px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  background: #fff;
+}
+
+.h2group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.h2group--1440 { max-width: 1440px; }
+.h2group__inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.h2 {
+  width: 100%;
+  font-weight: 700;
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  text-align: center;
+  color: var(--ink);
+}
+.h2--intrinsic { line-height: 67.77px; }
+.h2--px { line-height: 60.48px; }
+.h2--940 { max-width: 940px; }
+
+.desc {
+  width: 100%;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  letter-spacing: -0.26px;
+  text-align: center;
+  color: var(--ink);
+}
+.desc--1200 { max-width: 1200px; }
+
+/* ---------- shared: buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 4px 32px;
+  border-radius: 32px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  white-space: nowrap;
+  flex-shrink: 0; /* never let a fixed-height card squash the button below 48px */
+}
+.btn--dark { color: #fff; }
+.btn--white { color: var(--ink); }
+.btn--link { color: var(--blue); }
+.btn--flush { padding-left: 0; padding-right: 0; }
+.btn-row { display: flex; align-items: center; justify-content: center; gap: 16px; }
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+.nav {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  isolation: isolate;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* the header is transparent at the very top of the page; its glass, hairline and shadow
+   fade in once the page scrolls (site.js: .nav--scrolled), and always show while the
+   burger menu is open */
+.nav--scrolled,
+.nav.is-menu-open {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+/* the glass lives on a pseudo-element: with backdrop-filter on .nav itself the header becomes a
+   "backdrop root" and the dropdown inside it could only blur the header, never the page below */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  backdrop-filter: blur(20px) saturate(1.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.nav--scrolled::before,
+.nav.is-menu-open::before { opacity: 1; }
+/* Over a dark block the header inverts: light type, the white-text logo, dark glass.
+   site.js measures the background of whatever block sits under the header and toggles
+   .nav--on-dark, so this works on any page and needs no per-section markup. While the burger
+   panel is open the header goes back to light — that panel is white glass. */
+.nav--on-dark:not(.is-menu-open) .nav__item,
+.nav--on-dark:not(.is-menu-open) .nav__chevron { color: #fff; }
+.nav--on-dark:not(.is-menu-open) .nav__item:hover,
+.nav--on-dark:not(.is-menu-open) .nav__item:focus-visible,
+.nav--on-dark:not(.is-menu-open) .nav__dd.is-open .nav__item--dd,
+.nav--on-dark:not(.is-menu-open) .nav__dd:hover .nav__item--dd { color: #7cc0ff; }
+.nav--on-dark:not(.is-menu-open) .nav__logo-dark { display: none; }
+.nav--on-dark:not(.is-menu-open) .nav__logo-light { display: block; }
+.nav--on-dark:not(.is-menu-open) .nav__burger span { background: #fff; }
+.nav--on-dark:not(.is-menu-open)::before { background: rgba(10, 11, 14, 0.62); }
+/* no hairline on the dark state: over a black section it reads as a seam, the shadow alone
+   is enough to lift the header off the page */
+.nav--on-dark.nav--scrolled:not(.is-menu-open) {
+  border-bottom-color: transparent;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.32);
+}
+/* the CTA flips to white so it stays the brightest thing in the row */
+.nav--on-dark:not(.is-menu-open) .nav__btn {
+  --rb-fill: #ffffff;
+  --rb-fill-60: rgba(255, 255, 255, 0.6);
+  --rb-fill-0: rgba(255, 255, 255, 0);
+  color: var(--ink);
+}
+.nav__item, .nav__chevron, .nav__btn { transition: color 0.25s ease; }
+
+.nav__wrap {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.nav__logo {
+  width: 122px;
+  height: 24px;
+  padding-right: 8px;
+  display: block;
+}
+.nav__logo img { width: 116px; height: 24px; }
+.nav__logo-light { display: none; } /* white-text copy, shown only over the dark hero (hero-dark.css) */
+.nav__menu {
+  width: 711px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+.nav__item {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: -0.14px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.nav__item:hover,
+.nav__item:focus-visible { color: var(--blue); }
+.nav__item--dd { gap: 4px; }
+.nav__chevron { width: 16px; height: 16px; display: block; color: var(--ink); }
+.nav__item--dd:hover .nav__chevron,
+.nav__item--dd:focus-visible .nav__chevron { color: var(--blue); }
+
+/* ---------- "Built for you" dropdown (Figma 14:12199) ---------- */
+.nav__dd { position: relative; display: flex; align-items: center; }
+.nav__dd .nav__chevron { transition: transform 0.2s ease; }
+.nav__dd.is-open .nav__item--dd,
+.nav__dd:hover .nav__item--dd,
+.nav__dd:focus-within .nav__item--dd { color: var(--blue); }
+.nav__dd.is-open .nav__chevron,
+.nav__dd:hover .nav__chevron,
+.nav__dd:focus-within .nav__chevron { color: var(--blue); transform: rotate(180deg); }
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 23px); /* Figma: panel sits 3px under the 56px header */
+  width: 276px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  /* same glass as the header (.nav): translucent white, blur, soft shadow, hairline */
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  backdrop-filter: blur(20px) saturate(1.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+  z-index: 20;
+}
+/* invisible bridge so the pointer can travel from the link down to the panel */
+.dropdown::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -23px;
+  height: 23px;
+}
+.nav__dd.is-open .dropdown,
+.nav__dd:hover .dropdown,
+.nav__dd:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s;
+}
+.dropdown__group {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.dropdown__label {
+  padding: 8px 10px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14.52px;
+  letter-spacing: 0.6px;
+  color: var(--grey);
+}
+.dropdown__item {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: -0.14px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.dropdown__item:hover,
+.dropdown__item:focus-visible { color: var(--blue); }
+@media (prefers-reduced-motion: reduce) {
+  .dropdown, .nav__dd .nav__chevron { transition: none; }
+}
+.nav__btn {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 32px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  width: 100%;
+  padding: 80px 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  background: #fff;
+}
+.hero__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.hero__title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.hero__h1group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.hero__h1 {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 96.82px;
+  letter-spacing: -2.4px;
+  text-align: center;
+  color: var(--ink);
+}
+.hero__sub {
+  width: 100%;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29.05px;
+  letter-spacing: -0.26px;
+  text-align: center;
+  color: var(--ink);
+}
+/* hero only (the banner keeps 24px): 2px smaller per review */
+.hero .hero__sub { font-size: 22px; line-height: 26.62px; }
+.hero__slot {
+  width: 100%;
+  padding-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+/* Hero scene — Figma image-slot 31:21809 (1120×550) as layers: glow ellipse + 6 card renders.
+   Each card PNG is the Figma render incl. its drop shadow, so left/top/width are the render
+   bounds of that card in % of the slot; the stack order is the Figma layer order. */
+.hero { overflow: clip; } /* like the Figma frame: card shadows stop at the hero edge */
+.hero__scene {
+  position: relative;
+  width: 1120px;
+  max-width: 100%;
+  aspect-ratio: 1120 / 550;
+  /* --hero-p: 0→1 as the hero scrolls away (site.js) — the scene fades while its layers
+     move at different speeds (parallax, --depth below: 0 = pinned, 1 = fastest) */
+  opacity: calc(1 - var(--hero-p, 0) * 0.5);
+  /* the cards enter out of depth (translateZ in hero-card-in), and the whole plane tilts a
+     degree or two towards the cursor (--px/--py, set by site.js) */
+  perspective: 1400px;
+  transform: perspective(1800px)
+    rotateX(calc(var(--py, 0) * -1.1deg))
+    rotateY(calc(var(--px, 0) * 1.5deg));
+}
+.hs {
+  position: absolute;
+  height: auto;
+  display: block;
+  --pd: 0.35;  /* pointer depth — how far this card follows the cursor */
+  /* one translate carries both JS-driven offsets (scroll --hero-p and pointer --px/--py),
+     which leaves transform free for the entrance and the idle float below */
+  translate:
+    calc(var(--px, 0) * var(--pd) * 20px)
+    calc(var(--hero-p, 0) * var(--depth, 0) * -180px + var(--py, 0) * var(--pd) * 14px);
+}
+.hs--customers { left: 37.1429%; top: 20.9091%; width: 65.7143%; }
+.hs--table     { left: -2.5%;    top: 20%;      width: 79.1071%; }
+.hs--positions { left: 15.9821%; top: 15.4545%; width: 68.0357%; }
+.hs--employee  { left: 39.8214%; top: 48.7273%; width: 54.2857%; }
+.hs--stat1     { left: 9.1071%;  top: 27.2727%; width: 31.25%; }
+.hs--stat2     { left: 58.2143%; top: 8.1818%;  width: 29.1071%; }
+/* depth: glow and the three big panels stay put (their cut-off bottom edges must stay under the
+   white end of .hero__fade — moving them shows a step between panels); the floating cards lift off */
+.hs--employee  { --depth: 0.45; }
+.hs--stat1     { --depth: 0.6; }
+.hs--stat2     { --depth: 0.75; }
+/* pointer depth + the idle float (amplitude --fy, period --ft): the small cards on top react
+   most, the big panels underneath barely move, so the stack reads as layers of one scene */
+.hs--table     { --pd: 0.18; --fy: 5px;  --ft: 9s; }
+.hs--customers { --pd: 0.26; --fy: 6px;  --ft: 8s; }
+.hs--positions { --pd: 0.34; --fy: 6px;  --ft: 10s; }
+.hs--employee  { --pd: 0.62; --fy: 9px;  --ft: 7s; }
+.hs--stat1     { --pd: 0.85; --fy: 11px; --ft: 6.2s; }
+.hs--stat2     { --pd: 1;    --fy: 12px; --ft: 6.8s; }
+
+/* Glow: Figma "Ellipse 7" 1120×328 at y −11, radial #1677FF → white 0% over 87.5% of the shape.
+   --glow is a registered colour property, so the centre colour itself is animated
+   (blue ↔ light blue); browsers without @property keep the static blue. */
+@property --glow {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #1677ff;
+}
+.hero__glow {
+  position: absolute;
+  left: 0;
+  top: -2%;
+  width: 100%;
+  aspect-ratio: 1120 / 328;
+  pointer-events: none;
+  opacity: 0.76;          /* "24% softer" than the Figma ellipse (owner's request) */
+  translate: calc(var(--px, 0) * 10px) calc(var(--py, 0) * 6px);
+}
+/* the gradient lives on ::before so the entrance (on .hero__glow) and the slow
+   colour/size breathing (here) can both animate transform */
+.hero__glow::before {
+  --glow: #1677ff;
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  /* Figma blends the stops in plain RGB (blue → white), so the mid stops are pale blue, not dim blue */
+  background: radial-gradient(ellipse 43.75% 43.75% at 50% 50%,
+    var(--glow) 0%,
+    color-mix(in srgb, var(--glow) 75%, #fff) 25%,
+    color-mix(in srgb, var(--glow) 50%, #fff) 50%,
+    color-mix(in srgb, var(--glow) 25%, #fff) 75%,
+    #fff 100%);
+  -webkit-mask: radial-gradient(ellipse 43.75% 43.75% at 50% 50%, #000 0%, rgba(0,0,0,.75) 25%, rgba(0,0,0,.5) 50%, rgba(0,0,0,.25) 75%, transparent 100%);
+          mask: radial-gradient(ellipse 43.75% 43.75% at 50% 50%, #000 0%, rgba(0,0,0,.75) 25%, rgba(0,0,0,.5) 50%, rgba(0,0,0,.25) 75%, transparent 100%);
+  animation: hero-glow-live 8s ease-in-out infinite;
+}
+@keyframes hero-glow-live {
+  0%, 100% { --glow: #1677ff; transform: scale(1); }
+  50%      { --glow: #38cfff; transform: scale(1.04, 1.08); }
+}
+
+/* Entrance (site.js adds .hero--anim right away and .hero--in once the card images are decoded):
+   glow blooms from the centre, cards rise in one after another, text comes in first. */
+.hero--anim .hero__glow,
+.hero--anim .hs,
+.hero--anim .hero__h1group,
+.hero--anim .hero__sub,
+.hero--anim .btn-row { opacity: 0; }
+.hero--in .hero__glow { animation: hero-glow-in 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s both; }
+/* entrance, then the float takes the same property over the moment the entrance ends */
+.hero--in .hs {
+  animation:
+    hero-card-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s) both,
+    hs-float var(--ft, 8s) ease-in-out calc(var(--d, 0s) + 1s) infinite;
+}
+.hero--in .hs--table     { --d: 0.35s; }
+.hero--in .hs--customers { --d: 0.45s; }
+.hero--in .hs--positions { --d: 0.55s; }
+.hero--in .hs--employee  { --d: 0.8s; }
+.hero--in .hs--stat1     { --d: 0.9s; }
+.hero--in .hs--stat2     { --d: 1s; }
+.hero--in .hero__h1group,
+.hero--in .hero__sub,
+.hero--in .btn-row { animation: hero-text-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.hero--in .hero__sub { animation-delay: 0.12s; }
+.hero--in .btn-row   { animation-delay: 0.22s; }
+@keyframes hero-glow-in {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 0.76; transform: none; }
+}
+/* cards assemble out of depth: each one flies in from below and behind the plane */
+@keyframes hero-card-in {
+  from { opacity: 0; transform: translate3d(0, 56px, -150px) rotateX(8deg); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes hs-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(calc(var(--fy, 6px) * -1)); }
+}
+@keyframes hero-text-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Reveal on scroll (site.js marks blocks with .fx, then .fx--in when they enter the viewport;
+   --fx-d staggers siblings). Without JS nothing is hidden. */
+.fx { opacity: 0; transform: translateY(28px); }
+.fx--in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s ease-out var(--fx-d, 0s), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--fx-d, 0s);
+}
+/* Figma: absolute frame at x=0 y=980, 1440×140, white→transparent bottom→top */
+.hero__fade {
+  position: absolute;
+  left: 0;
+  bottom: 0;                      /* = top 980px on the 1120px desktop hero */
+  width: 100%;                    /* Figma draws it 1440 wide (a 1440-layout leftover); full width so the right edge fades too */
+  height: 140px;
+  padding: 10px;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* =========================================================
+   WHY START ON A FOUNDATION
+   ========================================================= */
+.why__wrap {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.why__accent {
+  width: 524px;
+  flex: 0 0 524px;
+  padding: 48px;
+  border-radius: 32px;
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.why__block1 { display: flex; flex-direction: column; gap: 24px; }
+.why__spantext { display: flex; flex-direction: column; gap: 8px; }
+.why__num {
+  opacity: 0.7;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: 0.3px;
+  color: #fff;
+}
+.why__txt { display: flex; flex-direction: column; gap: 16px; }
+.why__h3 {
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 42px;
+  letter-spacing: -0.8px;
+  color: #fff;
+}
+.why__sub {
+  font-weight: 400;     /* regular, like every other description */
+  font-size: 16px;      /* same size as the grey cards' descriptions in this section */
+  line-height: 23.2px;
+  color: #fff;
+}
+.why__block1 .btn { align-self: flex-start; }
+.why__divider { width: 100%; height: 1px; background: rgba(255, 255, 255, 0.24); }
+.why__block2 { display: flex; flex-direction: column; gap: 16px; }
+.why__saved {
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 50.83px;
+  letter-spacing: -0.8px;
+  color: #fff;
+}
+.why__badges { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 980px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.16);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.36px;
+  color: #fff;
+  white-space: nowrap;
+}
+.pill img { width: 16px; height: 16px; }
+
+.why__grid {
+  flex: 1 1 0;
+  min-width: 0;
+  align-self: stretch; /* grey cards fill the full height of the blue card (Figma had them 14px shorter) */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+.why__row { flex: 1 1 0; display: flex; align-items: center; gap: 24px; }
+.why__card {
+  flex: 1 1 0;
+  min-width: 0;
+  align-self: stretch;
+  padding: 32px;
+  border-radius: 32px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.why__cardnum {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: 0.3px;
+}
+.why__h4 {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 26.45px;
+  letter-spacing: -0.46px;
+  color: var(--ink);
+}
+.why__p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--grey);
+}
+
+/* =========================================================
+   COMPANIES THIS WORKS FOR
+   ========================================================= */
+/* One grid for all six cards: rows = number / title / description.
+   Each card uses subgrid, so titles of any length never overlap and every
+   description starts on the same Y line across the row. */
+.companies__row {
+  width: 100%;
+  height: 534px; /* card height from Figma lives here: a subgrid item takes its grid area's height */
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: auto auto 1fr;
+  gap: 16px;
+}
+.ccard {
+  position: relative;
+  min-width: 0;
+  height: 534px;
+  padding: 32px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: var(--ink-2);
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  align-content: start;
+}
+/* fallback for browsers without subgrid */
+@supports not (grid-template-rows: subgrid) {
+  .ccard { display: flex; flex-direction: column; gap: 16px; }
+}
+.ccard--shadow-a { box-shadow: 0 0 16px rgba(29, 29, 31, 0.24); }
+.ccard--shadow-b { box-shadow: 0 0 32px rgba(18, 18, 47, 0.08); }
+.ccard__img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.ccard__num {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: 0.3px;
+}
+.ccard__h4 {
+  position: relative;
+  z-index: 1;
+  min-height: 80px; /* grows with long titles; the subgrid row keeps all cards aligned */
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 26.45px;
+  letter-spacing: -0.46px;
+  color: #fff;
+}
+.ccard__p {
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--grey-2);   /* over the photos: one step lighter than the card grey (owner) */
+}
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+.features { background: var(--surface); }
+.features__h2 {
+  max-width: 940px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+}
+.features__cards {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+/* rows keep the Figma heights as a minimum, but may grow with content so every
+   card in a row stays the same height and "Read More" sits on one baseline */
+.features__row { width: 100%; display: flex; align-items: stretch; gap: 32px; }
+.features__row--1 { min-height: 680px; }
+.features__row--2 { min-height: 760px; }
+.fcard {
+  flex: 1 1 0;
+  min-width: 0;
+  align-self: stretch;
+  padding-bottom: 16px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 32px rgba(18, 18, 47, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+/* Figma: the illustration is a self-contained 438×296 panel (grey rounded card with
+   dashboard fragments, PNG @3x from Figma), inset 8px inside the white card */
+.fcard__img {
+  flex: 0 0 auto;
+  width: 100%;
+  padding: 8px 8px 0;
+  background: #fff;
+}
+.fcard__img img { display: block; width: 100%; height: auto; aspect-ratio: 438 / 296; border-radius: 24px; }
+/* Figma: SPACE_BETWEEN (itemSpacing 22 is ignored by Figma in this mode) */
+.fcard__body {
+  flex: 1 1 auto;
+  padding: 24px 24px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px; /* never lets "Read More" touch the text when a card is at its minimum height */
+}
+.fcard__text { display: flex; flex-direction: column; gap: 24px; }
+.fcard__h3 {
+  min-height: 62.94px; /* two lines reserved, so every description in a row starts on the same line */
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 31.47px;
+  letter-spacing: -0.52px;
+  color: var(--ink);
+}
+.fcard__p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--ink);   /* owner: keep the feature lists black */
+  white-space: pre-wrap;
+}
+.fcard__body .btn { align-self: flex-start; }
+
+/* =========================================================
+   THREE WAYS TO A LIVE PLATFORM
+   ========================================================= */
+.three__row {
+  width: 100%;
+  max-width: 1400px;
+  height: 612px;
+  display: flex;
+  gap: 32px;
+}
+.ocard {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 44px 32px;
+  border-radius: 28px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ocard__top { display: flex; flex-direction: column; gap: 8px; }
+.ocard__label {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: 0.42px;
+  color: var(--grey);
+}
+.ocard__hp { display: flex; flex-direction: column; gap: 16px; }
+.ocard__h4 {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 26.45px;
+  letter-spacing: -0.46px;
+  color: var(--ink);
+}
+.ocard__pbox { height: 140px; }
+.ocard__p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--grey);
+}
+.ocard__rows { display: flex; flex-direction: column; }
+.ocard__r { padding: 16px 0; display: flex; flex-direction: column; gap: 5px; }
+.ocard__rl {
+  align-self: flex-start;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: 0.42px;
+  color: var(--grey);
+}
+.ocard__rv {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29.05px;
+  letter-spacing: -0.48px;
+  color: var(--ink);
+}
+.ocard__sep { height: 1px; background: var(--grey); opacity: 0.16; }
+
+/* best option: dark, gradient border (2px outside), blue glow */
+.ocard--best {
+  gap: 0;
+  justify-content: space-between;
+  background: var(--ink);
+  box-shadow: var(--glow-card);
+}
+.ocard--best::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 30px;
+  padding: 2px;
+  background: var(--grad);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.ocard__best-inner { display: flex; flex-direction: column; gap: 16px; }
+.ocard--best .ocard__h4,
+.ocard--best .ocard__p,
+.ocard--best .ocard__rv { color: #fff; }
+.ocard--best .ocard__sep { background: #fff; }
+.ocard--best .btn { align-self: flex-start; }
+
+/* =========================================================
+   24 MONTHS OF YOUR WORK ALREADY DONE
+   ========================================================= */
+.months {
+  gap: 48px;
+  background: var(--ink);
+}
+.months__top {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+.months__left {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.months__h2 {
+  width: fit-content;   /* the gradient spans the text, not the row */
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 60.48px;
+  letter-spacing: -1.68px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.months__white { color: #fff; -webkit-text-fill-color: #fff; }
+.months__sub {
+  align-self: flex-start;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  letter-spacing: -0.26px;
+  color: #fff;
+}
+/* ---------- roadmaps: two 24-month tracks ----------
+   Positions are months on a shared 24-month scale: every stop carries --at and is placed
+   with calc(), so both tracks stay proportional at any width. The line is one element
+   per track with the whole gradient in it; a stop's ring takes the line colour at its
+   month (color-mix), so nothing is measured in JS. */
+.months__maps {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.rmap {
+  --node: 14px;
+  --line: 2px;
+  --draw: 1.5s;     /* time the line takes to cross all 24 months */
+  --lag: 0s;        /* the second track waits for the first */
+  --span: 24;       /* months over which the cyan→blue run happens */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.rmap__head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  color: #fff;
+  white-space: nowrap;
+}
+.rmap__muted { font-weight: 500; color: var(--grey); }
+/* track: labels above (26px) · node row (30px) · labels below (2 lines, 44px);
+   inset by half a ring so the first and last rings sit inside the content width */
+.rmap__track {
+  position: relative;
+  width: calc(100% - var(--node));
+  margin: 0 calc(var(--node) / 2);
+  height: 100px;
+}
+.rmap__track > * { position: absolute; }
+.rmap__line {
+  left: 0;
+  right: 0;
+  top: calc(26px + 15px - var(--line) / 2);
+  height: var(--line);
+  border-radius: var(--line);
+  background: var(--grad);
+  transform-origin: left center;
+}
+/* glow (FinStarter track only, soft): a blurred copy of the line in the same gradient, so the halo changes colour with it */
+.rmap--fade .rmap__line::after {
+  content: "";
+  position: absolute;
+  inset: -3px 0;
+  border-radius: inherit;
+  background: inherit;
+  filter: blur(8px);
+  opacity: 0.45;
+}
+/* FinStarter: cyan→blue up to launch (4/24), then green that dissolves into the background */
+.rmap--fade .rmap__line {
+  background: linear-gradient(90deg, #3cffff 0%, #006aff 16.67%, var(--green) 23%, var(--green) 62%, rgba(62, 226, 127, 0) 100%);
+}
+.rmap__note {
+  left: calc(var(--from) / var(--total) * 100%);
+  width: calc((var(--to) - var(--from)) / var(--total) * 100%);
+  bottom: calc(100% - 26px - 15px + var(--line) / 2 + 8px); /* 8px above the line */
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: var(--green);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rmap__stop {
+  top: 26px;
+  left: calc(var(--at) / var(--total) * 100%);
+  width: 0;
+  height: 30px;
+  --tx: -50%;       /* label centred on the ring … */
+  --ty: 0px;
+  --ring: color-mix(in srgb, #006aff calc(var(--at) / var(--span) * 100%), #3cffff);
+}
+.rmap__stop--start { --tx: 0%; }    /* … flush with the ring's left edge on the first stop */
+.rmap__stop--end { --tx: -100%; }   /* … flush with its right edge on the last one */
+.rmap__node {
+  position: absolute;
+  left: calc(var(--node) / -2);
+  top: calc(15px - var(--node) / 2);
+  width: var(--node);
+  height: var(--node);
+  cursor: default;
+}
+/* the ring lives on ::before so it can grow on hover without touching the reveal transform */
+.rmap__node::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--ring);
+  background: var(--ink);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--ring) 45%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.rmap__node:hover::before { transform: scale(1.4); box-shadow: 0 0 16px color-mix(in srgb, var(--ring) 70%, transparent); }
+@supports not (color: color-mix(in srgb, #000, #fff)) {
+  .rmap__node::before { border-color: #1fb0ff; box-shadow: 0 0 10px rgba(31, 176, 255, 0.45); }
+}
+.rmap__label {
+  position: absolute;
+  left: 0;
+  transform: translate(var(--tx), var(--ty));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: var(--grey-2);
+  white-space: nowrap;
+}
+.rmap__label > span, .rmap__label > small { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.rmap__label > small {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--grey);
+}
+.rmap__stop--start .rmap__label { left: calc(var(--node) / -2); align-items: flex-start; text-align: left; }
+.rmap__stop--end .rmap__label { left: calc(var(--node) / 2); align-items: flex-end; text-align: right; }
+.rmap__stop--top .rmap__label { bottom: calc(15px + var(--node) / 2 + 8px); }
+.rmap__stop--bottom .rmap__label { top: calc(15px + var(--node) / 2 + 8px); }
+
+/* the reveal (armed by JS via .rmap--armed, played via .rmap--in):
+   the line draws left→right and every stop pops the moment it is reached */
+.rmap--armed .rmap__line { transform: scaleX(0); }
+.rmap--armed .rmap__note { opacity: 0; transform: translateY(4px); }
+.rmap--armed .rmap__node { transform: scale(0); opacity: 0; }
+.rmap--armed .rmap__label { opacity: 0; }
+.rmap--armed .rmap__stop--top { --ty: 6px; }
+.rmap--armed .rmap__stop--bottom { --ty: -6px; }
+.rmap--in .rmap__line {
+  transform: scaleX(1);
+  transition: transform var(--draw) cubic-bezier(0.4, 0, 0.2, 1) var(--lag);
+}
+.rmap--in .rmap__note {
+  opacity: 1; transform: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: calc(var(--draw) * (var(--from) + var(--to)) / 2 / var(--total) + var(--lag));
+}
+.rmap--in .rmap__node {
+  transform: scale(1); opacity: 1;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+  transition-delay: calc(var(--draw) * var(--at) / var(--total) + var(--lag));
+}
+.rmap--in .rmap__stop { --ty: 0px; }
+.rmap--in .rmap__label {
+  opacity: 1;
+  transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc(var(--draw) * var(--at) / var(--total) + var(--lag) + 0.1s);
+}
+
+.months__grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.months__row {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.mcard {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 227px;
+  padding: 44px 32px;
+  border-radius: 28px;
+  background: var(--ink-2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mcard__h4 {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 26.45px;
+  letter-spacing: -0.46px;
+  color: #fff;
+}
+.mcard__p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--grey);
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq__list {
+  width: 100%;
+  max-width: 970px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+/* accordion item: header button + collapsible body (grid 0fr → 1fr for a smooth height animation) */
+.qa {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface-2);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.qa:hover {
+  box-shadow: 0 6px 20px rgba(18, 20, 40, 0.035);
+  transform: translateY(-1px);
+}
+.qa__head {
+  width: 100%;
+  padding: 24px;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.qa__head:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; border-radius: 16px; }
+.qa__q {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 24px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  color: var(--ink);
+}
+.qa__icon {
+  position: relative;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.qa__icon::before,
+.qa__icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: var(--blue);
+  border-radius: 1px;
+  transform: translate(-50%, -50%);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+}
+.qa__icon::before { width: 2px; height: 14px; }   /* vertical bar */
+.qa__icon::after  { width: 14px; height: 2px; }   /* horizontal bar */
+.qa.is-open .qa__icon { transform: rotate(180deg); }
+.qa.is-open .qa__icon::before { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+.qa__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.qa.is-open .qa__body { grid-template-rows: 1fr; }
+.qa__answer {
+  min-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.qa.is-open .qa__answer { opacity: 1; transform: none; }
+.qa__answer p {
+  padding: 0 24px 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .qa, .qa__icon, .qa__icon::before, .qa__icon::after, .qa__body, .qa__answer { transition: none; }
+}
+/* =========================================================
+   BACKED BY ITRANSITION
+   ========================================================= */
+.backed__h2 { color: var(--ink); }
+/* "Itransition": the Figma rainbow (blue/green/yellow/purple/pink) softened into neighbouring hues that
+   blend cleanly, drifting slowly across the word */
+.rainbow {
+  --rainbow: linear-gradient(90deg, #1677ff 0%, #35d2ff 18%, #4fe3b0 36%, #8f7bff 58%, #f06ac4 78%, #1677ff 100%);
+  display: inline-block;
+  background: var(--rainbow);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-drift 12s ease-in-out infinite alternate;
+  transition: opacity 0.2s ease;
+}
+a.rainbow:hover,
+a.rainbow:focus-visible { opacity: 0.8; }
+@keyframes rainbow-drift {
+  from { background-position: 0% 50%; }
+  to   { background-position: 100% 50%; }
+}
+.backed__nums {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  gap: 24px;
+}
+.nmbr {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.nmbr__v {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 96.82px;
+  letter-spacing: -2.4px;
+  text-align: center;
+  font-variant-numeric: tabular-nums; /* digits keep their width while counting up */
+}
+.nmbr__l {
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  text-align: center;
+  color: var(--ink);
+}
+.backed__cols {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  gap: 68px;
+}
+.backed__p {
+  flex: 1 1 0;
+  min-width: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--ink);
+}
+
+/* =========================================================
+   BANNER
+   ========================================================= */
+.banner { overflow: hidden; }
+.banner__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+.banner__title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.banner__h1group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.banner__h1 {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 96.82px;
+  letter-spacing: -2.4px;
+  text-align: center;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer {
+  width: 100%;
+  padding: 24px 159px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  background: #fff;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+.footer__top {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  gap: 32px;
+}
+.footer__brand {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px;
+}
+.footer__brand img { width: 155px; height: 32px; }
+.footer__tagline {
+  width: 280px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.73px;
+  color: var(--ink);
+}
+.footer__powered {
+  display: flex;
+  gap: 4px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.73px;
+  color: var(--ink);
+}
+.footer__powered-link { font-weight: 500; color: var(--blue); }
+.footer__cols {
+  width: 822px;
+  flex: 0 0 822px;
+  display: flex;
+  gap: 32px;
+}
+.footer__col {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer__title {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 15.73px;
+  letter-spacing: 0.65px;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.footer__links {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.footer__links--fill { align-self: stretch; }
+.footer__links a {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 22px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.footer__links a:hover,
+.footer__links a:focus-visible { color: var(--blue); }
+.footer__bottom {
+  width: 100%;
+  max-width: 1400px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+}
+.footer__copy {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  text-align: center;
+  color: var(--grey);
+  white-space: nowrap;
+}
+.footer__contact {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 14.52px;
+  white-space: nowrap;
+}
+.footer__mail { font-weight: 500; color: var(--blue); }
+.footer__sep { font-weight: 400; color: var(--ink); }
+.footer__loc { font-weight: 400; color: var(--ink); }
+
+/* =========================================================
+   RAINBOW BUTTONS — animated rainbow border + blurred glow.
+   Applied to every solid button (dark and white); fills stay as designed.
+   Port of the 21st.dev "rainbow-button" (React/Tailwind) to plain CSS.
+   ========================================================= */
+:root {
+  --rb-1: hsl(0 100% 63%);
+  --rb-2: hsl(270 100% 63%);
+  --rb-3: hsl(210 100% 63%);
+  --rb-4: hsl(195 100% 63%);
+  --rb-5: hsl(90 100% 63%);
+  --rb-grad: linear-gradient(90deg, var(--rb-1), var(--rb-5), var(--rb-3), var(--rb-4), var(--rb-2));
+  --rb-speed: 2s;
+}
+@keyframes rainbow {
+  0%   { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+.btn--dark,
+.btn--white,
+.nav__btn {
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
+  border: 0.08rem solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box, border-box;
+  background-size: 200%;
+  background-image:
+    linear-gradient(var(--rb-fill), var(--rb-fill)),
+    linear-gradient(var(--rb-fill) 50%, var(--rb-fill-60) 80%, var(--rb-fill-0)),
+    var(--rb-grad);
+  animation: rainbow var(--rb-speed) infinite linear;
+  transition: color 0.15s, transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+}
+.btn--dark,
+.nav__btn {
+  --rb-fill: #121417;
+  --rb-fill-60: rgba(18, 20, 23, 0.6);
+  --rb-fill-0: rgba(18, 20, 23, 0);
+}
+.btn--white {
+  --rb-fill: #ffffff;
+  --rb-fill-60: rgba(255, 255, 255, 0.6);
+  --rb-fill-0: rgba(255, 255, 255, 0);
+}
+.btn--dark::before,
+.btn--white::before,
+.nav__btn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -20%;
+  z-index: -1;
+  width: 60%;
+  height: 20%;
+  transform: translateX(-50%);
+  background-image: var(--rb-grad);
+  background-size: 200%;
+  filter: blur(0.8rem);
+  animation: rainbow var(--rb-speed) infinite linear;
+  pointer-events: none;
+  transition: width 0.25s ease, height 0.25s ease, bottom 0.25s ease, filter 0.25s ease;
+}
+
+/* Hover: the button lifts a little and the rainbow it already sits on spreads out under it —
+   the glow is the same element, just wider and softer, so nothing new appears out of nowhere.
+   The fill lightens a step; pressing puts the button back down. */
+.btn--dark:hover,
+.nav__btn:hover { --rb-fill: #22262c; --rb-fill-60: rgba(34, 38, 44, 0.6); --rb-fill-0: rgba(34, 38, 44, 0); }
+.btn--white:hover { --rb-fill: #f2f2f5; --rb-fill-60: rgba(242, 242, 245, 0.6); --rb-fill-0: rgba(242, 242, 245, 0); }
+.btn--dark:hover,
+.nav__btn:hover { box-shadow: 0 10px 26px rgba(18, 20, 23, 0.26); }
+.btn--white:hover { box-shadow: 0 10px 26px rgba(18, 20, 23, 0.16); }
+.btn--dark:hover,
+.btn--white:hover,
+.nav__btn:hover { transform: translateY(-2px); }
+.btn--dark:hover::before,
+.btn--white:hover::before,
+.nav__btn:hover::before {
+  width: 84%;
+  height: 34%;
+  bottom: -26%;
+  filter: blur(1.1rem);
+}
+.btn--dark:active,
+.btn--white:active,
+.nav__btn:active {
+  transform: translateY(0) scale(0.985);
+  box-shadow: none;
+  transition-duration: 0.08s;
+}
+.btn--dark:active::before,
+.btn--white:active::before,
+.nav__btn:active::before { width: 60%; height: 20%; bottom: -20%; filter: blur(0.8rem); }
+.btn--dark:focus-visible,
+.btn--white:focus-visible,
+.nav__btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn--dark, .btn--white, .nav__btn,
+  .btn--dark::before, .btn--white::before, .nav__btn::before { animation: none; }
+  .btn--dark:hover, .btn--white:hover, .nav__btn:hover,
+  .btn--dark:active, .btn--white:active, .nav__btn:active { transform: none; }
+}
+
+/* =========================================================
+   MOTION
+   ========================================================= */
+/* Hero: gentle flow of the existing cyan→blue gradient on "production-ready foundation" */
+@keyframes grad-flow {
+  from { background-position: 0% 50%; }
+  to   { background-position: 100% 50%; }
+}
+.hero__h1 .gt {
+  background-image: linear-gradient(90deg, #3cffff 0%, #006aff 50%, #3cffff 100%);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  animation: grad-flow 7s ease-in-out infinite alternate;
+}
+
+/* Companies: cards slide in from the right edge when the row scrolls into view.
+   Without JS (or with reduced motion) the cards are simply visible. */
+.companies { overflow-x: clip; overflow-y: visible; }
+.reveal .ccard { transform: translateX(2000px); opacity: 0; }
+.reveal--in .ccard {
+  transform: none;
+  opacity: 1;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease-out;
+}
+.reveal--in .ccard:nth-child(2) { transition-delay: 70ms; }
+.reveal--in .ccard:nth-child(3) { transition-delay: 140ms; }
+.reveal--in .ccard:nth-child(4) { transition-delay: 210ms; }
+.reveal--in .ccard:nth-child(5) { transition-delay: 280ms; }
+.reveal--in .ccard:nth-child(6) { transition-delay: 350ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__h1 .gt { animation: none; }
+  .hero__glow::before, .rainbow, .blob { animation: none; }
+  .hs { translate: none; animation: none; }
+  .hero__scene, .hero__glow { transform: none; translate: none; }
+  .fx { opacity: 1; transform: none; }
+  .reveal .ccard { transform: none; opacity: 1; transition: none; }
+}
+
+/* =========================================================
+   LIQUID BACKGROUNDS (liquid.js) — hero + final CTA
+   Remove the <canvas class="liquid"> elements to roll back.
+   ========================================================= */
+.liquid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero > :not(.liquid):not(.hero__fade):not(.blobs),
+.banner > :not(.liquid):not(.blobs) { position: relative; z-index: 1; }
+.hero__fade { z-index: 1; }
+.banner { position: relative; }
+
+/* =========================================================
+   BLOBS — soft blurred shapes behind the hero and behind banner + footer (.tail).
+   Three per block; each drifts, breathes, morphs its outline and slowly shifts between
+   two colours (--c1 → --c2, animated through the registered --b). Remove the .blobs
+   <div>s to roll back — nothing else depends on them.
+   ========================================================= */
+@property --b {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #35d2ff;
+}
+.blobs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  /* shapes dissolve before they reach the top/bottom edge, so the neighbouring
+     white section never meets a hard-cut blob */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 160px, #000 calc(100% - 160px), transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 160px, #000 calc(100% - 160px), transparent 100%);
+}
+.blob {
+  --b: var(--c1);
+  position: absolute;
+  display: block;
+  /* smaller than the block they sit in, so white space stays between them — one wall-to-wall
+     wash is what made the page look grey */
+  width: 38vw;
+  height: 38vw;
+  max-width: 660px;
+  max-height: 660px;
+  min-width: 300px;
+  min-height: 300px;
+  background: radial-gradient(closest-side, var(--b) 0%, color-mix(in srgb, var(--b) 60%, transparent) 40%, transparent 100%);
+  filter: blur(68px);
+  /* multiply, not plain alpha: where two shapes cross, the colours mix like ink and stay
+     saturated instead of averaging into grey (on white, multiply with the page is a no-op) */
+  mix-blend-mode: multiply;
+  opacity: 0.34;
+  will-change: transform, border-radius;
+  animation:
+    blob-drift var(--t, 28s) ease-in-out infinite alternate,
+    blob-morph calc(var(--t, 28s) * 0.7) ease-in-out infinite alternate,
+    blob-tint calc(var(--t, 28s) * 0.55) ease-in-out infinite alternate;
+  animation-delay: var(--d, 0s), calc(var(--d, 0s) * 0.5), var(--d, 0s);
+}
+/* palette: Apple's system colours, blue family + one green. No purple — at any strength its
+   warm end reads pink over white. Each shape drifts between two neighbouring hues only:
+   a swing across the wheel (cyan→indigo, green→blue) desaturates through the middle, and that
+   grey midpoint was most of the dirt. */
+.blob--1 { --c1: #5856d6; --c2: #007aff; --t: 30s; --d: -6s;  left: -8%;  top: -14%; }
+.blob--2 { --c1: #32ade6; --c2: #007aff; --t: 34s; --d: -14s; right: -6%; top: -6%; }
+.blob--3 { --c1: #34c759; --c2: #32ade6; --t: 26s; --d: -21s; left: 26%; bottom: -24%; opacity: 0.3; }
+.blob--4 { --c1: #007aff; --c2: #5856d6; --t: 32s; --d: -9s;  right: 16%; bottom: -20%; opacity: 0.24; }
+.hero .blob--3 { opacity: 0.22; } /* under the dashboard scene: keep it faint next to the blue glow */
+@keyframes blob-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(9vw, 6vw, 0) scale(1.12); }
+  100% { transform: translate3d(-5vw, 10vw, 0) scale(0.94); }
+}
+@keyframes blob-morph {
+  0%   { border-radius: 58% 42% 46% 54% / 52% 58% 42% 48%; }
+  50%  { border-radius: 42% 58% 60% 40% / 40% 46% 54% 60%; }
+  100% { border-radius: 50% 50% 38% 62% / 62% 38% 60% 40%; }
+}
+@keyframes blob-tint {
+  from { --b: var(--c1); }
+  to   { --b: var(--c2); }
+}
+/* banner + footer share one set of shapes */
+.tail {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+}
+.tail > .banner,
+.tail > .footer { position: relative; z-index: 1; background: transparent; }
+
+/* =========================================================
+   BOOK A DEMO — MODAL
+   ========================================================= */
+body.modal-open { overflow: hidden; }
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 20, 23, 0.44);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: 48px;
+  border-radius: 32px;
+  /* frosted glass: slightly translucent so the blurred page shows through */
+  background: rgba(255, 255, 255, 0.82);
+  -webkit-backdrop-filter: blur(28px) saturate(1.3);
+  backdrop-filter: blur(28px) saturate(1.3);
+  box-shadow: 0 32px 80px rgba(18, 20, 23, 0.24), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity 0.22s ease, transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1);
+  outline: none;
+}
+.modal.is-open .modal__backdrop { opacity: 1; }
+.modal.is-open .modal__dialog { opacity: 1; transform: none; }
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.modal__close:hover { background: var(--line); }
+.modal__close:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.modal__head { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 32px; }
+.modal__title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 44px;
+  letter-spacing: -1.2px;
+  color: var(--ink);
+}
+.modal__sub {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20.3px;
+  color: var(--grey);
+}
+
+.form { display: flex; flex-direction: column; gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field__label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.94px;
+  letter-spacing: -0.14px;
+  color: var(--ink);
+}
+.field__req { color: var(--blue); }
+.field__input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: var(--surface);
+  font: inherit;
+  font-size: 16px;
+  line-height: 23.2px;
+  color: var(--ink);
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  appearance: none;
+}
+.field__input::placeholder { color: #b4b4ba; }
+.field__input:hover { background: var(--surface-2); }
+.field__input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(22, 119, 255, 0.14);
+}
+.field__input--area { height: auto; min-height: 120px; padding: 14px 16px; resize: vertical; }
+.field__input.is-invalid { border-color: var(--red); background: #fff; }
+.field__input.is-invalid:focus { box-shadow: 0 0 0 4px rgba(229, 72, 77, 0.14); }
+.field__error { display: none; font-size: 13px; line-height: 18px; color: var(--red); }
+.field__error:not(:empty) { display: block; }
+
+.form__submit {
+  width: 100%;
+  margin-top: 8px;
+  gap: 10px;
+  font: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+}
+.form__arrow { transition: transform 0.2s ease; }
+.form__submit:hover .form__arrow { transform: translateX(3px); }
+.form__note {
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  color: var(--grey);
+}
+
+.modal__view--done { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 24px 0 8px; }
+.done__icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: var(--grad);
+  box-shadow: 0 0 32px rgba(0, 132, 255, 0.32);
+}
+.modal__view--done .modal__sub { max-width: 380px; }
+.done__close { margin-top: 20px; font: inherit; font-weight: 500; font-size: 18px; cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  .modal__backdrop, .modal__dialog, .form__arrow { transition: none; }
+}

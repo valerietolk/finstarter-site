@@ -1,0 +1,162 @@
+/* =========================================================
+   DARK HERO — a skin, not a rewrite.
+   Everything here is scoped to body.hero-dark, and the layout, the animation and the
+   Figma geometry stay in styles.css. To go back to the white hero: drop the class on
+   <body> in index.html (and this file's <link>); nothing else depends on it.
+
+   Layers, back to front:  base gradient → drifting blobs (screen) → grain →
+   blue glow under the dashboard (screen) → the card scene → the bottom fade.
+   ========================================================= */
+
+/* palette: Apple's dark system colours, kept to one family — blue, indigo, green.
+   No magenta/pink: over a near-black base those two are what turned the wash muddy. */
+body.hero-dark {
+  --hero-bg: #08090c;
+  --hero-bg-2: #0c1118;   /* the cooler blue the top of the section drifts into */
+  --ios-blue: #0a84ff;
+  --ios-indigo: #5e5ce6;
+  --ios-green: #30d158;
+  --ios-teal: #0fb894;
+}
+
+/* ---------- the section itself ----------
+   the header is sticky above the hero, not inside it, so the backdrop has to live on <body>:
+   that way one continuous gradient runs from the top of the page through the header strip
+   and into the hero, with no seam where the section starts */
+body.hero-dark {
+  background:
+    /* the drifting shapes live inside .hero, which starts below the sticky header — these two
+       static tints carry the same colours up through the header strip so the top corners
+       are not a dead black band */
+    radial-gradient(58% 420px at 6% 0%, rgba(94, 92, 230, 0.22) 0%, rgba(94, 92, 230, 0) 72%),
+    radial-gradient(52% 380px at 96% 0%, rgba(48, 209, 88, 0.15) 0%, rgba(48, 209, 88, 0) 72%),
+    radial-gradient(130% 700px at 50% -60px, var(--hero-bg-2) 0%, rgba(12, 17, 24, 0) 72%),
+    var(--hero-bg);
+  background-repeat: no-repeat;
+}
+body.hero-dark .hero {
+  background: transparent;
+  color-scheme: dark;
+}
+/* grain: without it the wide dark gradients band on 8-bit screens */
+body.hero-dark .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- drifting shapes: brighter, and screened so they read as light, not paint ---------- */
+body.hero-dark .hero .blob {
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  filter: blur(80px);
+}
+body.hero-dark .hero .blob--1 { --c1: var(--ios-green);  --c2: var(--ios-indigo); }
+body.hero-dark .hero .blob--2 { --c1: var(--ios-blue);   --c2: var(--ios-green); }
+body.hero-dark .hero .blob--3 { --c1: var(--ios-indigo); --c2: var(--ios-blue); opacity: 0.34; }
+body.hero-dark .hero .blob--4 {
+  --c1: var(--ios-teal); --c2: var(--ios-blue); --t: 32s; --d: -9s;
+  right: 22%; bottom: -26%;
+  opacity: 0.3;
+}
+/* no edge mask here: on white the shapes had to dissolve before the next section, on black
+   they can run to the top edge (and the bottom is already covered by the dark fade) */
+body.hero-dark .hero .blobs {
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+
+/* ---------- the glow: on black it is light, so it fades to transparent, not to white ---------- */
+/* the glow stays inside the blue family: the light cyan it used to reach hazed over the
+   black instead of lighting it */
+body.hero-dark .hero__glow { opacity: 0.8; mix-blend-mode: screen; }
+body.hero-dark .hero__glow::before {
+  background: radial-gradient(ellipse 46% 46% at 50% 50%,
+    var(--glow) 0%,
+    color-mix(in srgb, var(--glow) 62%, transparent) 30%,
+    color-mix(in srgb, var(--glow) 26%, transparent) 55%,
+    transparent 78%);
+  -webkit-mask: none;
+          mask: none;
+}
+@keyframes hero-glow-live-dark {
+  0%, 100% { --glow: #0a6fff; transform: scale(1); }
+  50%      { --glow: #2f9bff; transform: scale(1.06, 1.1); }
+}
+body.hero-dark .hero__glow::before { animation-name: hero-glow-live-dark; }
+body.hero-dark .hero--in .hero__glow { animation-name: hero-glow-in-dark; }
+@keyframes hero-glow-in-dark {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 0.8; transform: none; }
+}
+
+/* ---------- the scene ----------
+   The Figma renders are frosted glass (white at ~65% alpha), which turns grey on black, so
+   assets/hero/dark/* are the same cards baked onto white and cut out at the panel edge
+   (site.js swaps the src in). They lost the Figma drop shadow with the cut-out, so the
+   separation between overlapping panels comes back as a CSS shadow. */
+body.hero-dark .hs { filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.45)); }
+/* the light the cards sit in: a soft blue-white pool, wide and low-contrast — enough to lift
+   the black behind the collage without turning the section into fog */
+body.hero-dark .hero__scene::before {
+  content: "";
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  top: -10%;
+  bottom: 0;
+  z-index: 0;   /* first child of the scene, so the cards (later in the DOM) sit on top of it */
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 58% at 50% 32%,
+    rgba(10, 132, 255, 0.34) 0%,
+    rgba(10, 110, 240, 0.22) 45%,
+    rgba(12, 80, 205, 0.11) 68%,
+    rgba(10, 50, 150, 0.035) 86%,
+    transparent 100%);
+  filter: blur(26px);
+}
+/* on white a steady fade read as "drifting away"; on black any opacity below 1 just greys the
+   panels out, so the collage stays fully opaque for the first half of the scroll and only then
+   dissolves into the dark */
+body.hero-dark .hero__scene { opacity: calc(1 - max(var(--hero-p, 0) - 0.45, 0) * 1.9); }
+
+/* ---------- type ---------- */
+body.hero-dark .hero__h1 { color: #fff; }
+body.hero-dark .hero .hero__sub { color: rgba(255, 255, 255, 0.72); }
+body.hero-dark .hero .btn--link { color: #7cc0ff; }
+
+/* the white CTA is the one bright solid in the section, so it reads as the first thing to click */
+body.hero-dark .hero .btn--dark {
+  --rb-fill: #ffffff;
+  --rb-fill-60: rgba(255, 255, 255, 0.6);
+  --rb-fill-0: rgba(255, 255, 255, 0);
+  color: var(--ink);
+}
+
+/* ---------- the header, while it still sits over the dark hero ---------- */
+/* (once .nav--scrolled turns the glass on, or the burger panel opens, the normal light
+   header takes over again — nothing below applies then) */
+body.hero-dark .nav:not(.nav--scrolled):not(.is-menu-open) .nav__item,
+body.hero-dark .nav:not(.nav--scrolled):not(.is-menu-open) .nav__chevron { color: #fff; }
+body.hero-dark .nav:not(.nav--scrolled):not(.is-menu-open) .nav__item:hover,
+body.hero-dark .nav:not(.nav--scrolled):not(.is-menu-open) .nav__item:focus-visible { color: #7cc0ff; }
+body.hero-dark .nav:not(.nav--scrolled):not(.is-menu-open) .nav__logo-dark { display: none; }
+body.hero-dark .nav:not(.nav--scrolled):not(.is-menu-open) .nav__logo-light { display: block; }
+body.hero-dark .nav:not(.nav--scrolled):not(.is-menu-open) .nav__burger span { background: #fff; }
+body.hero-dark .nav:not(.nav--scrolled):not(.is-menu-open) .nav__btn {
+  --rb-fill: #ffffff;
+  --rb-fill-60: rgba(255, 255, 255, 0.6);
+  --rb-fill-0: rgba(255, 255, 255, 0);
+  color: var(--ink);
+}
+
+/* ---------- the bottom: cards dissolve into the hero's own black ---------- */
+body.hero-dark .hero__fade {
+  height: 180px;
+  background: linear-gradient(to top, var(--hero-bg) 0%, rgba(7, 8, 11, 0.86) 38%, rgba(7, 8, 11, 0) 100%);
+}

@@ -6,6 +6,12 @@
       "runtimeExecutable": "powershell",
       "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "tools/serve.ps1", "site", "8765"],
       "port": 8765
+    },
+    {
+      "name": "site-mac",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd site && exec python3 -m http.server 8765"],
+      "port": 8765
     }
   ]
 }

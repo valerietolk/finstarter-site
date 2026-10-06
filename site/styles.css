@@ -763,19 +763,18 @@ img { display: block; }
   color: var(--ink);
   -webkit-text-fill-color: var(--ink);
 }
+/* Eight cards, four per row, sharing one grid like the company cards: rows = image / title /
+   description / Read More. Each card uses subgrid, so titles of any length never push a
+   description down on its own and every "Read More" sits on one line across the row. */
 .features__cards {
-  width: 100%;
-  max-width: 1400px;
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
+  width: 100%;          /* full section width and the same 16px gaps as .companies__row */
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto auto 1fr auto);
+  gap: 16px;
 }
-/* rows keep the Figma heights as a minimum, but may grow with content so every
-   card in a row stays the same height and "Read More" sits on one baseline */
-.features__row { width: 100%; display: flex; align-items: stretch; gap: 32px; }
-.features__row--1 { min-height: 680px; }
-.features__row--2 { min-height: 760px; }
 .fcard {
+  grid-row: span 4;
   flex: 1 1 0;
   min-width: 0;
   align-self: stretch;
@@ -823,6 +822,14 @@ img { display: block; }
   white-space: pre-wrap;
 }
 .fcard__body .btn { align-self: flex-start; }
+@supports (grid-template-rows: subgrid) {
+  .fcard { display: grid; grid-template-rows: subgrid; row-gap: 0; }
+  .fcard__img { margin-bottom: 24px; }
+  .fcard__body { grid-row: span 3; display: grid; grid-template-rows: subgrid; row-gap: 0; }
+  .fcard__text { display: contents; }
+  .fcard__h3 { min-height: 0; margin-bottom: 24px; }
+  .fcard__body .btn { align-self: end; justify-self: start; margin-top: 16px; }
+}
 
 /* =========================================================
    THREE WAYS TO A LIVE PLATFORM
@@ -913,6 +920,24 @@ img { display: block; }
 .ocard--best .ocard__rv { color: #fff; }
 .ocard--best .ocard__sep { background: #fff; }
 .ocard--best .btn { align-self: flex-start; }
+/* One grid for the three cards: rows = label / title / description / TIME·COST·FIT / button.
+   The row keeps its Figma height as a minimum but grows with the text, and every card's
+   TIME line stays level with the others however long its description wraps (narrow laptops). */
+@supports (grid-template-rows: subgrid) {
+  .three__row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto auto auto auto 1fr;
+    height: auto;
+    min-height: 612px;
+  }
+  .ocard { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+  .ocard__top, .ocard__hp, .ocard__best-inner { display: contents; }
+  .ocard__label { margin-bottom: 8px; }
+  .ocard__h4 { margin-bottom: 16px; }
+  .ocard__pbox { height: auto; min-height: 140px; margin-bottom: 16px; }
+  .ocard--best .btn { align-self: end; justify-self: start; }
+}
 
 /* =========================================================
    24 MONTHS OF YOUR WORK ALREADY DONE

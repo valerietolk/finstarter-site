@@ -51,6 +51,10 @@
   .ccard { min-width: 0; }
 
   .rmap__label, .rmap__note { font-size: 13px; line-height: 17px; }  /* keeps the 4 FinStarter labels apart on a laptop */
+
+  /* features: still four in a row, so the cards get smaller titles */
+  .fcard__body { padding: 20px 20px 0; }
+  .fcard__h3 { font-size: 22px; line-height: 27px; letter-spacing: -0.4px; }
 }
 
 /* ---------- ≤1024: tablet landscape ---------- */
@@ -82,13 +86,17 @@
   .why__row { flex: 0 0 auto; }
   .why__card { min-height: 260px; }
 
-  /* features: 2 columns, rows flow */
-  .features__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-  .features__row { display: contents; }
-  .features__row--1, .features__row--2 { min-height: 0; }
+  /* features: 2 columns, same subgrid rows (4 groups of image / title / text / link) */
+  .features__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(4, auto auto 1fr auto); }
 
   /* three ways: stacked */
-  .three__row { flex-direction: column; height: auto; gap: 24px; }
+  .three__row { display: flex; flex-direction: column; height: auto; min-height: 0; gap: 24px; }
+  /* back from the subgrid to plain stacked cards */
+  .ocard, .ocard__top, .ocard__hp, .ocard__best-inner { display: flex; flex-direction: column; }
+  .ocard { row-gap: 16px; }
+  .ocard__label, .ocard__h4, .ocard__pbox, .ocard--best .btn { margin: 0; }
+  .ocard__pbox { min-height: 0; }
+  .ocard--best .btn { align-self: flex-start; }
   .ocard { flex: 0 0 auto; }
   .ocard__pbox { height: auto; }
   .ocard--best { gap: 16px; }
@@ -253,7 +261,12 @@
   .why__card { flex: 0 0 auto; min-height: auto; }
 
   /* features: one card per row, horizontal — image left, text right */
-  .features__cards { display: flex; flex-direction: column; gap: 20px; }
+  .features__cards { display: flex; flex-direction: column; gap: 16px; }
+  /* back from the subgrid to the plain flex card */
+  .fcard, .fcard__body, .fcard__text { display: flex; }
+  .fcard__body, .fcard__text { flex-direction: column; }
+  .fcard__img, .fcard__h3, .fcard__body .btn { margin: 0; }
+  .fcard__body .btn { align-self: flex-start; }
   .fcard { flex: 0 0 auto; flex-direction: row; align-items: stretch; padding-bottom: 0; gap: 0; }
   /* the left column shows the portrait render (<picture>/<source media> in index.html),
      stretched to the card's height and cropped from the centre */

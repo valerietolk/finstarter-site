@@ -87,7 +87,7 @@
   .why__card { min-height: 260px; }
 
   /* features: 2 columns, same subgrid rows (4 groups of image / title / text / link) */
-  .features__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(4, auto auto 1fr auto); }
+  .features__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(4, auto auto 1fr auto); gap: 32px 24px; }
 
   /* three ways: stacked */
   .three__row { display: flex; flex-direction: column; height: auto; min-height: 0; gap: 24px; }
@@ -261,7 +261,7 @@
   .why__card { flex: 0 0 auto; min-height: auto; }
 
   /* features: one card per row, horizontal — image left, text right */
-  .features__cards { display: flex; flex-direction: column; gap: 16px; }
+  .features__cards { display: flex; flex-direction: column; gap: 24px; }
   /* back from the subgrid to the plain flex card */
   .fcard, .fcard__body, .fcard__text { display: flex; }
   .fcard__body, .fcard__text { flex-direction: column; }

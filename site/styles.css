@@ -767,11 +767,12 @@ img { display: block; }
    description / Read More. Each card uses subgrid, so titles of any length never push a
    description down on its own and every "Read More" sits on one line across the row. */
 .features__cards {
-  width: 100%;          /* full section width and the same 16px gaps as .companies__row */
+  width: 100%;          /* full section width, capped at 1920 on very wide screens */
+  max-width: 1920px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: repeat(2, auto auto 1fr auto);
-  gap: 16px;
+  gap: 48px 32px;       /* rows · columns: roomier than the company cards (owner) */
 }
 .fcard {
   grid-row: span 4;
